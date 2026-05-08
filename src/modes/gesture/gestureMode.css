@@ -1,0 +1,1224 @@
+.siteShell:has(.gestureExperience) {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(41, 182, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 86% 24%, rgba(24, 95, 255, 0.16), transparent 30%),
+    linear-gradient(135deg, #050914 0%, #071222 46%, #08111d 100%);
+}
+
+.siteShell:has(.gestureExperience) .navbar {
+  background: rgba(5, 12, 24, 0.86);
+  border-bottom-color: rgba(126, 204, 255, 0.18);
+}
+
+.siteShell:has(.gestureExperience) .brand,
+.siteShell:has(.gestureExperience) .navReturnLink,
+.siteShell:has(.gestureExperience) .navButton,
+.siteShell:has(.gestureExperience) .modeSwitchLink {
+  color: #edf8ff;
+}
+
+.siteShell:has(.gestureExperience) .modeSwitchLink {
+  background: rgba(10, 25, 45, 0.76);
+  border-color: rgba(126, 204, 255, 0.2);
+}
+
+.siteShell:has(.gestureExperience) .modeSwitchLink[aria-current="page"] {
+  background: rgba(11, 99, 246, 0.18);
+  border-color: rgba(74, 188, 255, 0.58);
+}
+
+.siteShell:has(.gestureExperience) .footer {
+  color: #92a7bc;
+}
+
+.gestureExperience {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #eaf7ff;
+  background:
+    linear-gradient(rgba(116, 194, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(116, 194, 255, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 22% 18%, rgba(0, 194, 255, 0.17), transparent 28%),
+    radial-gradient(circle at 82% 12%, rgba(30, 88, 255, 0.2), transparent 28%),
+    linear-gradient(135deg, #050914 0%, #071222 46%, #08111d 100%);
+  background-size: 54px 54px, 54px 54px, auto, auto, auto;
+}
+
+.gestureExperience::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(103, 206, 255, 0.08) 50%, transparent 100%),
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.32) 100%);
+  pointer-events: none;
+}
+
+.gestureLanding,
+.gestureStage,
+.gestureCommandCenter {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 90%);
+  margin: 0 auto;
+}
+
+.gestureLanding {
+  min-height: calc(100vh - 82px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 0.72fr;
+  align-items: center;
+  gap: 60px;
+  padding: 84px 0;
+}
+
+.gestureHeroCopy h1,
+.gestureStageHeader h1,
+.commandTopbar h1 {
+  margin: 0;
+  max-width: 880px;
+  color: #f7fcff;
+  font-size: clamp(3rem, 6vw, 6.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.gestureHeroCopy p,
+.gestureStageHeader p,
+.commandTopbar p {
+  max-width: 720px;
+  color: #aec5dc;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.gestureKicker {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 7px 11px;
+  border: 1px solid rgba(109, 208, 255, 0.34);
+  border-radius: 999px;
+  color: #8fe2ff;
+  background: rgba(14, 42, 70, 0.72);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gestureActionRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.gestureExperience .button-primary,
+.gestureExperience .button-secondary,
+.gestureExperience button {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.gestureExperience .button-primary {
+  color: #001526;
+  background: linear-gradient(135deg, #8fe2ff, #3e8cff);
+  box-shadow: 0 18px 45px rgba(45, 160, 255, 0.25);
+}
+
+.gestureExperience .button-secondary {
+  color: #dff7ff;
+  background: rgba(9, 25, 44, 0.78);
+  border-color: rgba(128, 211, 255, 0.34);
+}
+
+.gestureExperience button:hover,
+.gestureExperience .button:hover {
+  transform: translateY(-1px);
+}
+
+.gesturePrivacyNote,
+.gestureAlert,
+.fallbackReason {
+  max-width: 760px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  color: #cbe7ff;
+  background: rgba(10, 25, 45, 0.68);
+  border: 1px solid rgba(126, 204, 255, 0.22);
+}
+
+.gestureAlert {
+  color: #ffe2e2;
+  border-color: rgba(255, 138, 138, 0.36);
+  background: rgba(92, 20, 28, 0.42);
+}
+
+.gestureOrbitalPreview {
+  position: relative;
+  min-height: 480px;
+  border: 1px solid rgba(126, 204, 255, 0.18);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle, rgba(93, 205, 255, 0.18), transparent 58%),
+    rgba(8, 24, 43, 0.52);
+  box-shadow:
+    inset 0 0 38px rgba(96, 206, 255, 0.08),
+    0 30px 80px rgba(0, 0, 0, 0.22);
+}
+
+.gestureOrbitRing,
+.gestureOrbitCore {
+  position: absolute;
+  inset: 50%;
+  translate: -50% -50%;
+}
+
+.gestureOrbitRing {
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(142, 226, 255, 0.28);
+  border-radius: 50%;
+  animation: gesturePulse 4s ease-in-out infinite;
+}
+
+.gestureOrbitRing:nth-child(2) {
+  width: 280px;
+  height: 280px;
+  animation-delay: 0.7s;
+}
+
+.gestureOrbitRing:nth-child(3) {
+  width: 380px;
+  height: 380px;
+  animation-delay: 1.4s;
+}
+
+.gestureOrbitCore {
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  border-radius: 30px;
+  color: #001526;
+  background: linear-gradient(135deg, #8fe2ff, #3e8cff);
+  font-size: 2rem;
+  font-weight: 950;
+  box-shadow: 0 0 50px rgba(70, 180, 255, 0.38);
+}
+
+.gestureStage {
+  min-height: calc(100vh - 82px);
+  padding: 72px 0;
+}
+
+.gestureStageHeader {
+  margin-bottom: 34px;
+}
+
+.gestureInstructionGrid,
+.calibrationGrid,
+.commandOverviewGrid,
+.knowledgeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gestureInstructionCard,
+.keyboardFallbackPanel,
+.calibrationStatusPanel,
+.commandMainPanel,
+.gestureSimulator,
+.gestureProjectCard,
+.knowledgeCard,
+.commandMetricCard,
+.timelineDetail,
+.resumeViewer section,
+.contactTerminal,
+.skillDetailPanel {
+  border: 1px solid rgba(126, 204, 255, 0.18);
+  border-radius: 22px;
+  background: rgba(8, 24, 43, 0.68);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 22px 60px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.gestureInstructionCard {
+  min-height: 142px;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  padding: 20px;
+}
+
+.gestureSignal {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: #001526;
+  background: linear-gradient(135deg, #8fe2ff, #69a7ff);
+  font-size: 1.5rem;
+  font-weight: 950;
+}
+
+.gestureInstructionCard h2,
+.keyboardFallbackPanel h2,
+.calibrationStatusPanel h2,
+.knowledgeCard h3,
+.commandMetricCard strong,
+.resumeViewer h3,
+.timelineDetail h3,
+.skillDetailPanel h3 {
+  margin: 0 0 8px;
+  color: #f7fcff;
+}
+
+.gestureInstructionCard p,
+.keyboardFallbackPanel,
+.calibrationStatusPanel,
+.knowledgeCard p,
+.commandMetricCard p,
+.resumeViewer p,
+.resumeViewer li,
+.timelineDetail p,
+.skillDetailPanel p {
+  color: #abc3da;
+  line-height: 1.65;
+}
+
+.keyboardFallbackPanel {
+  margin-top: 18px;
+  padding: 22px;
+}
+
+.keyboardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.keyboardGrid span {
+  display: grid;
+  gap: 8px;
+  color: #abc3da;
+}
+
+.keyboardGrid kbd {
+  width: fit-content;
+  padding: 8px 10px;
+  border: 1px solid rgba(126, 204, 255, 0.22);
+  border-radius: 10px;
+  color: #8fe2ff;
+  background: rgba(3, 10, 22, 0.62);
+  font-weight: 900;
+}
+
+.calibrationGrid {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.gestureCameraSurface {
+  position: relative;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(126, 204, 255, 0.2);
+  border-radius: 28px;
+  background:
+    linear-gradient(rgba(143, 226, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143, 226, 255, 0.055) 1px, transparent 1px),
+    rgba(8, 24, 43, 0.72);
+  background-size: 34px 34px;
+}
+
+.gestureCameraSurface video {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.gestureCameraSurface p {
+  max-width: 320px;
+  color: #abc3da;
+  text-align: center;
+}
+
+.palmTarget {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(143, 226, 255, 0.55);
+  border-radius: 50%;
+  color: #8fe2ff;
+  background: rgba(5, 14, 27, 0.22);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+}
+
+.mirroredPreviewLabel {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 7px 10px;
+  border: 1px solid rgba(143, 226, 255, 0.28);
+  border-radius: 999px;
+  color: #dff7ff;
+  background: rgba(5, 14, 27, 0.62);
+  font-size: 0.74rem;
+  font-weight: 850;
+}
+
+.calibrationStatusPanel {
+  padding: 24px;
+}
+
+.gestureStatusList {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.gestureStatusList div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(126, 204, 255, 0.12);
+}
+
+.gestureStatusList dt {
+  color: #7e9ab6;
+}
+
+.gestureStatusList dd {
+  margin: 0;
+  color: #f7fcff;
+  font-weight: 900;
+}
+
+.gestureStatusHUD {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 40;
+  width: 230px;
+  display: grid;
+  gap: 9px;
+  padding: 14px;
+  border: 1px solid rgba(126, 204, 255, 0.22);
+  border-radius: 18px;
+  color: #dff7ff;
+  background: rgba(5, 14, 27, 0.78);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.gestureStatusHUD div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.78rem;
+}
+
+.gestureStatusHUD .gestureDebugPanel {
+  display: grid;
+  gap: 4px;
+  padding: 9px;
+  border: 1px solid rgba(126, 204, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(3, 10, 22, 0.42);
+}
+
+.gestureDebugPanel small {
+  color: #b9d0e6;
+  font-size: 0.72rem;
+}
+
+.gestureStatusHUD span {
+  color: #87a6c0;
+}
+
+.gestureStatusHUD strong {
+  text-align: right;
+}
+
+.gestureTinyButton,
+.gestureDefaultExit,
+.commandControls button,
+.sectionDock button,
+.gestureSimulator button,
+.projectCardActions button,
+.timelineActions button,
+.terminalBody button,
+.resumeViewer button,
+.modalCloseButton,
+.radialMenu button {
+  border: 1px solid rgba(126, 204, 255, 0.24);
+  border-radius: 12px;
+  color: #dff7ff;
+  background: rgba(11, 35, 60, 0.72);
+  cursor: pointer;
+}
+
+.gestureTinyButton {
+  padding: 9px 10px;
+  font-weight: 850;
+}
+
+.gestureDefaultExit {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 40;
+  padding: 11px 14px;
+  background: rgba(5, 14, 27, 0.72);
+  backdrop-filter: blur(18px);
+}
+
+.gesturePointer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 70;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  filter: drop-shadow(0 0 16px rgba(105, 213, 255, 0.78));
+  transition:
+    opacity 140ms ease,
+    filter 140ms ease;
+}
+
+.gesturePointerRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(#8fe2ff var(--hold-progress), rgba(143, 226, 255, 0.16) 0),
+    radial-gradient(circle, rgba(143, 226, 255, 0.12), transparent 62%);
+  border: 1px solid rgba(143, 226, 255, 0.68);
+  box-shadow:
+    0 0 0 7px rgba(77, 145, 255, 0.08),
+    inset 0 0 14px rgba(143, 226, 255, 0.18);
+}
+
+.gesturePointerDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dff7ff;
+  box-shadow: 0 0 14px rgba(223, 247, 255, 0.9);
+}
+
+.gesturePointer.isHovering {
+  filter: drop-shadow(0 0 24px rgba(143, 226, 255, 0.95));
+}
+
+.gesturePointer.isHovering .gesturePointerRing {
+  scale: 1.18;
+}
+
+.gesturePointer-pinch .gesturePointerRing {
+  scale: 0.78;
+  background: radial-gradient(circle, #8fe2ff, #4d91ff);
+}
+
+.gesturePointer-pinch-pending .gesturePointerRing {
+  scale: 0.94;
+  border-style: dashed;
+  box-shadow:
+    0 0 0 9px rgba(77, 145, 255, 0.07),
+    inset 0 0 18px rgba(143, 226, 255, 0.24);
+}
+
+.gesturePointer-cooldown {
+  opacity: 0.55;
+}
+
+.gestureCommandCenter {
+  padding: 44px 0 110px;
+}
+
+.commandTopbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.commandTopbar h1 {
+  max-width: 780px;
+  font-size: clamp(2.4rem, 5vw, 5.2rem);
+}
+
+.commandControls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.commandControls button,
+.gestureSimulator button,
+.timelineActions button,
+.modalCloseButton {
+  padding: 11px 14px;
+  font-weight: 850;
+}
+
+.commandLayout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) 220px;
+  gap: 18px;
+}
+
+.sectionDock {
+  display: grid;
+  gap: 8px;
+  align-self: start;
+}
+
+.sectionDock button {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  text-align: left;
+}
+
+.sectionDock button[aria-current="page"] {
+  color: #001526;
+  background: linear-gradient(135deg, #8fe2ff, #4d91ff);
+}
+
+.sectionDock span {
+  font-weight: 950;
+}
+
+.commandMainPanel {
+  min-height: 620px;
+  padding: 22px;
+}
+
+.commandPanelHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  color: #8fe2ff;
+  font-size: 0.86rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gestureSimulator {
+  align-self: start;
+  padding: 18px;
+}
+
+.commandCameraPreview {
+  position: relative;
+  min-height: 142px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin-bottom: 14px;
+  border: 1px solid rgba(126, 204, 255, 0.18);
+  border-radius: 16px;
+  background: rgba(3, 10, 22, 0.52);
+}
+
+.commandCameraPreview video {
+  width: 100%;
+  height: 100%;
+  min-height: 142px;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.commandCameraPreview p {
+  max-width: 150px;
+  color: #9ab3cb;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.commandCameraPreview small {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  color: #dff7ff;
+  background: rgba(5, 14, 27, 0.7);
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.gestureSimulator span,
+.projectCardHeader span,
+.knowledgeCard span,
+.commandMetricCard span,
+.skillDetailPanel span,
+.timelineDetail span {
+  display: block;
+  margin-bottom: 8px;
+  color: #8fe2ff;
+  font-size: 0.76rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gestureSimulator p {
+  color: #9ab3cb;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.gestureSimulator button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.gestureProjectGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.gestureProjectCard {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  outline: none;
+}
+
+.gestureProjectCard.isFocused,
+.gestureProjectCard:focus-within,
+.terminalBody button.isFocused,
+.terminalBody button:focus-visible {
+  border-color: rgba(143, 226, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(92, 190, 255, 0.14);
+}
+
+.projectCardHeader strong {
+  display: block;
+  color: #f7fcff;
+  font-size: 1.06rem;
+}
+
+.gestureProjectCard p {
+  margin: 0;
+  color: #abc3da;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.gestureProjectCard b {
+  color: #eaf7ff;
+}
+
+.gestureToolList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gestureToolList span {
+  padding: 7px 10px;
+  border: 1px solid rgba(126, 204, 255, 0.2);
+  border-radius: 999px;
+  color: #8fe2ff;
+  background: rgba(11, 35, 60, 0.62);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.projectCardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.projectCardActions button {
+  padding: 8px 10px;
+}
+
+.projectCardActions button:disabled,
+.resumeViewer button:disabled {
+  color: #7e92a8;
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.projectModalOverlay,
+.radialOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 8, 18, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.projectModal {
+  width: min(900px, 100%);
+  max-height: 88vh;
+  overflow: auto;
+  padding: 26px;
+  border: 1px solid rgba(126, 204, 255, 0.28);
+  border-radius: 28px;
+  color: #eaf7ff;
+  background: rgba(7, 20, 37, 0.96);
+  box-shadow: 0 30px 110px rgba(0, 0, 0, 0.38);
+}
+
+.projectModalHeader {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.projectModalHeader span {
+  color: #8fe2ff;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.projectModalHeader h2 {
+  margin: 8px 44px 0 0;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 0.98;
+}
+
+.projectModalHeader button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  color: #dff7ff;
+  background: rgba(11, 35, 60, 0.72);
+}
+
+.projectModalGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.projectModalGrid div {
+  padding: 16px;
+  border: 1px solid rgba(126, 204, 255, 0.16);
+  border-radius: 18px;
+  background: rgba(8, 24, 43, 0.66);
+}
+
+.projectModalGrid h3 {
+  margin: 0 0 8px;
+  color: #8fe2ff;
+}
+
+.projectModalGrid p {
+  color: #abc3da;
+  line-height: 1.62;
+}
+
+.radialMenu {
+  position: relative;
+  width: min(520px, 90vw);
+  height: min(520px, 90vw);
+  border: 1px solid rgba(126, 204, 255, 0.24);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(143, 226, 255, 0.16), transparent 52%),
+    rgba(7, 20, 37, 0.92);
+  box-shadow: 0 30px 110px rgba(0, 0, 0, 0.38);
+}
+
+.radialCore {
+  position: absolute;
+  inset: 50%;
+  width: 160px;
+  height: 160px;
+  display: grid;
+  place-items: center;
+  translate: -50% -50%;
+  border: 1px solid rgba(126, 204, 255, 0.28);
+  border-radius: 50%;
+  background: rgba(5, 14, 27, 0.88);
+}
+
+.radialCore span {
+  color: #f7fcff;
+  font-weight: 950;
+}
+
+.radialCore button {
+  padding: 8px 12px;
+}
+
+.radialItem {
+  position: absolute;
+  width: 112px;
+  height: 46px;
+  left: 50%;
+  top: 50%;
+  font-weight: 900;
+  transform:
+    rotate(var(--menu-angle))
+    translate(188px)
+    rotate(calc(-1 * var(--menu-angle)))
+    translate(-50%, -50%);
+}
+
+.radialItem[aria-current="true"] {
+  color: #001526;
+  background: linear-gradient(135deg, #8fe2ff, #4d91ff);
+}
+
+.skillsConstellation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 18px;
+}
+
+.constellationMap {
+  position: relative;
+  min-height: 500px;
+  border: 1px solid rgba(126, 204, 255, 0.16);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at center, rgba(143, 226, 255, 0.12), transparent 56%),
+    rgba(5, 14, 27, 0.32);
+}
+
+.constellationMap::before {
+  content: "";
+  position: absolute;
+  inset: 76px;
+  border: 1px solid rgba(126, 204, 255, 0.14);
+  border-radius: 50%;
+}
+
+.skillNode {
+  position: absolute;
+  width: 122px;
+  min-height: 50px;
+  padding: 9px;
+  border-color: rgba(126, 204, 255, 0.24);
+  color: #dff7ff;
+  background: rgba(11, 35, 60, 0.82);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.skillNode.isSelected {
+  color: #001526;
+  background: linear-gradient(135deg, #8fe2ff, #4d91ff);
+}
+
+.coreNode {
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  min-height: 72px;
+  translate: -50% -50%;
+}
+
+.skillNode:nth-child(2) { left: 50%; top: 8%; translate: -50% 0; }
+.skillNode:nth-child(3) { right: 16%; top: 16%; }
+.skillNode:nth-child(4) { right: 7%; top: 42%; }
+.skillNode:nth-child(5) { right: 18%; bottom: 13%; }
+.skillNode:nth-child(6) { left: 50%; bottom: 7%; translate: -50% 0; }
+.skillNode:nth-child(7) { left: 16%; bottom: 13%; }
+.skillNode:nth-child(8) { left: 7%; top: 42%; }
+.skillNode:nth-child(9) { left: 16%; top: 16%; }
+.skillNode:nth-child(10) { left: 50%; top: 24%; translate: -50% 0; }
+
+.skillDetailPanel {
+  align-self: start;
+  padding: 22px;
+}
+
+.careerTimeline {
+  display: grid;
+  gap: 18px;
+}
+
+.timelineRail {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(170px, 1fr));
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.timelineDot {
+  min-height: 110px;
+  padding: 14px;
+  text-align: left;
+  white-space: normal;
+}
+
+.timelineDot[aria-current="step"] {
+  color: #001526;
+  background: linear-gradient(135deg, #8fe2ff, #4d91ff);
+}
+
+.timelineDot span {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 950;
+}
+
+.timelineDetail {
+  padding: 22px;
+}
+
+.timelineActions {
+  display: flex;
+  gap: 10px;
+}
+
+.resumeViewer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.resumeViewer section {
+  padding: 18px;
+}
+
+.resumeViewer ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.resumeViewer button {
+  min-height: 58px;
+  grid-column: 1 / -1;
+}
+
+.contactTerminal {
+  overflow: hidden;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(126, 204, 255, 0.16);
+}
+
+.terminalHeader span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8fe2ff;
+}
+
+.terminalHeader span:nth-child(2) {
+  background: #69a7ff;
+}
+
+.terminalHeader span:nth-child(3) {
+  background: #2c5fe8;
+}
+
+.terminalHeader strong {
+  margin-left: 8px;
+  color: #dff7ff;
+}
+
+.terminalBody {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+}
+
+.terminalBody button {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  text-align: left;
+}
+
+.terminalBody button span {
+  color: #8fe2ff;
+  font-family: Consolas, "SFMono-Regular", monospace;
+  font-size: 0.82rem;
+}
+
+.terminalBody button strong {
+  color: #f7fcff;
+}
+
+.terminalBody button small {
+  color: #9ab3cb;
+  overflow-wrap: anywhere;
+}
+
+.commandMetricCard,
+.knowledgeCard {
+  padding: 18px;
+}
+
+@keyframes gesturePulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    scale: 1;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.04;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gestureOrbitRing,
+  .gestureExperience .button-primary,
+  .gestureExperience .button-secondary,
+  .gestureExperience button {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 1120px) {
+  .gestureLanding,
+  .commandTopbar,
+  .commandLayout,
+  .skillsConstellation {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionDock {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gestureSimulator {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .gestureSimulator span,
+  .gestureSimulator p,
+  .commandCameraPreview {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 860px) {
+  .gestureInstructionGrid,
+  .commandOverviewGrid,
+  .knowledgeGrid,
+  .gestureProjectGrid,
+  .projectModalGrid,
+  .resumeViewer,
+  .calibrationGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .keyboardGrid,
+  .sectionDock,
+  .gestureSimulator {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gestureStatusHUD {
+    position: static;
+    width: min(1180px, 90%);
+    margin: 18px auto 0;
+  }
+
+  .gestureDefaultExit {
+    position: static;
+    margin: 0 5% 24px;
+  }
+}
+
+@media (max-width: 620px) {
+  .gestureLanding,
+  .gestureStage,
+  .gestureCommandCenter {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .gestureHeroCopy h1,
+  .gestureStageHeader h1,
+  .commandTopbar h1 {
+    font-size: 3rem;
+  }
+
+  .gestureOrbitalPreview {
+    min-height: 320px;
+  }
+
+  .gestureInstructionCard,
+  .keyboardGrid,
+  .sectionDock,
+  .gestureSimulator {
+    grid-template-columns: 1fr;
+  }
+
+  .radialMenu {
+    width: 320px;
+    height: 320px;
+  }
+
+  .radialItem {
+    position: static;
+    width: auto;
+    transform: none;
+  }
+
+  .radialMenu {
+    display: grid;
+    align-content: center;
+    gap: 8px;
+    padding: 24px;
+    border-radius: 28px;
+  }
+
+  .radialCore {
+    position: static;
+    width: auto;
+    height: auto;
+    translate: none;
+    padding: 14px;
+    border-radius: 18px;
+  }
+}

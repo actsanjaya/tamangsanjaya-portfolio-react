@@ -1,16 +1,46 @@
-# React + Vite
+# Sanjaya Tamang Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website for `tamangsanjaya.com.np`, built with React and Vite
+and deployed through GitHub to Cloudflare Pages.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+```
 
-## React Compiler
+Cloudflare Pages settings:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Build command: `npm run build`
+- Build output directory: `dist`
 
-## Expanding the ESLint configuration
+## Mode Architecture
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The site is structured around portfolio modes. The central registry lives in
+`src/config/modes.js`. Each mode entry includes an id, name, description, route,
+status, icon, and component.
+
+Current routes:
+
+- `/` and `/default`: professional default portfolio
+- `/gesture`: optional webcam gesture-control command center
+- `/gaming`: lightweight game-like portfolio zone scaffold
+
+Gesture Mode is built as an optional Actuarial Command Center experience. It
+uses `src/modes/gesture/hooks/useGestureEngine.js` for camera permission,
+MediaPipe Tasks Vision hand tracking, mirrored-preview correction, gesture
+cooldowns, fallback state, and cleanup. Mouse, keyboard, touch, and manual
+fallback controls remain available when camera or model access is unavailable.
+
+To add a future mode:
+
+1. Create a new folder in `src/modes`.
+2. Add the mode component and any mode-specific data/config files.
+3. Register it in `src/config/modes.js`.
+4. Set `showInSwitcher: true` when it should appear in the UI.
+
+The `public/_redirects` file keeps client-side routes working on Cloudflare
+Pages.
