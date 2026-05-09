@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import profileImg from '../../assets/profile.png'
+import portfolioPromo from '../../assets/portfolio-promo.mp4'
 import { Button } from '../../components/ui/Button.jsx'
 import { Card } from '../../components/ui/Card.jsx'
 import {
@@ -100,6 +101,10 @@ export function DefaultMode({ siteData }) {
   return (
     <main className="site defaultMode" id="top">
       <section id="home" className="hero">
+        <div className="heroProfileBackground" aria-hidden="true">
+          <img src={profileImg} alt="" />
+        </div>
+
         <div className="heroContent">
           <p className="eyebrow">{hero.eyebrow}</p>
 
@@ -128,12 +133,7 @@ export function DefaultMode({ siteData }) {
           </div>
         </div>
 
-        <div className="heroVisual" aria-label="Professional portrait and data visuals">
-          <div className="chartCard floatingCard">
-            <strong>Data Into Impact</strong>
-            <p>Building solutions that deliver accuracy, efficiency, and clarity.</p>
-          </div>
-
+        <div className="heroVisual" aria-label="Portfolio promo video and data visuals">
           <div className="visualCircle"></div>
           <div className="barChart" aria-hidden="true">
             <span></span>
@@ -144,7 +144,20 @@ export function DefaultMode({ siteData }) {
           </div>
           <div className="donutChart" aria-hidden="true"></div>
 
-          <img src={profileImg} alt={siteData.name} className="profileImage" />
+          <div className="heroVideoFrame" aria-label="Portfolio promo video">
+            <video
+              autoPlay
+              className="heroVideo"
+              controls
+              muted
+              playsInline
+              poster={profileImg}
+              preload="metadata"
+              src={portfolioPromo}
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </section>
 
