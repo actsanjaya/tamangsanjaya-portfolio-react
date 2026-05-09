@@ -44,3 +44,35 @@ To add a future mode:
 
 The `public/_redirects` file keeps client-side routes working on Cloudflare
 Pages.
+
+## Adding a New Project/App
+
+Focused portfolio projects live in `src/config/projectsData.js`. Each entry is
+metadata only: the portfolio should describe, link to, or document serious tools,
+while full apps stay in separate repos and deployments.
+
+To add or edit a project card:
+
+1. Add or update an object in `portfolioProjects`.
+2. Set `status` to `completed`, `in-progress`, `planned`, or `prototype`.
+3. Use `featured: true` for projects that should be emphasized.
+4. Add `tools`, `tags`, `deliverables`, and `futureRoadmap` values for the card
+   and future case study.
+5. Put future subdomains in `appSubdomain` as planning metadata only.
+
+External links are controlled by the `links` object:
+
+- `liveApp`: deployed app URL when real
+- `caseStudy`: portfolio or documentation page
+- `github`: public repository URL
+- `download`: downloadable template or resource URL
+- `demoVideo`: video demo URL
+- `screenshot`: screenshot asset path or URL
+
+Leave unavailable links as `null`. The UI renders those actions as disabled
+"Coming Soon" buttons instead of pretending a demo or app is live.
+
+For future downloadable templates, add the file intentionally and set
+`links.download` only after confirming the file contains no confidential data.
+All actuarial examples should use sample or synthetic data; do not commit private
+employer, client, policyholder, model, assumption, or company files to this repo.
