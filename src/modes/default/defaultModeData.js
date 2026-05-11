@@ -1,8 +1,8 @@
 export const defaultModeData = {
   hero: {
     eyebrow: "Hello, I'm",
-    titleLines: ['Technical', 'Actuarial Analyst'],
-    role: 'Actuarial Analyst',
+    titleLines: ['Sanjaya', 'Tamang'],
+    role: 'Technical Actuarial Analyst',
     roleAccent: 'Automation Enthusiast',
     text: 'I help insurance and financial teams turn complex data into reliable insights through actuarial analysis, data analysis, and automation. I build efficient solutions with Python, SQL, Power BI, and Advanced Excel to drive accuracy, efficiency, and better decisions.',
     badges: ['🛡️ Actuarial Expertise', '⌘ Automation Focused', '▥ Data Driven'],
