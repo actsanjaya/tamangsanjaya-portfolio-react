@@ -440,14 +440,14 @@ a {
 .heroStaticMascot {
   position: absolute;
   z-index: 8;
-  top: -218px;
-  left: 15%;
-  width: clamp(230px, 28vw, 390px);
+  top: -257px;
+  left: 50%;
+  width: min(75%, 500px);
   height: auto;
   pointer-events: none;
   user-select: none;
   filter: drop-shadow(0 18px 22px rgba(15, 23, 42, 0.28));
-  transform: rotate(-2.5deg);
+  transform: translateX(-55%) rotate(-2.5deg);
 }
 
 .barChart {
@@ -1186,9 +1186,8 @@ a {
   }
 
   .heroStaticMascot {
-    top: -82px;
-    left: 7%;
-    width: clamp(190px, 30vw, 280px);
+    top: -96px;
+    width: min(44%, 290px);
   }
 
   .projectGrid,
