@@ -1,103 +1,160 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react'
 import { BuildingContentPanel } from './components/BuildingContentPanel.jsx'
-import { GameHUD } from './components/GameHUD.jsx'
-import { GameWorld } from './components/GameWorld.jsx'
-import { MiniMap } from './components/MiniMap.jsx'
-import { useKeyboardControls } from './hooks/useKeyboardControls.js'
-import { usePlayerMovement } from './hooks/usePlayerMovement.js'
-import { useWorldInteraction } from './hooks/useWorldInteraction.js'
-import {
-  INTERACTION_DISTANCE,
-  PLAYER_SPEED,
-  PLAYER_START,
-  WORLD_BOUNDS,
-  portfolioBuildings,
-} from './worldConfig.js'
+import { WORLD_SIZE, worldZones } from './game/data/worldZones.js'
 import './gamingMode.css'
 
-export function GamingMode({ onNavigate }) {
-  const [activeBuildingId, setActiveBuildingId] = useState(null)
-  const nearbyBuildingRef = useRef(null)
-  const activeBuilding = useMemo(
-    () => portfolioBuildings.find((building) => building.id === activeBuildingId),
-    [activeBuildingId],
+const ActuarialWorldGame = lazy(() =>
+  import('./game/ActuarialWorldGame.jsx').then((module) => ({
+    default: module.ActuarialWorldGame,
+  })),
+)
+
+function ActuarialWorldHud({ nearbyZone, onReturnDefault }) {
+  return (
+    <aside className="gameHUD actuarialWorldHud" aria-label="Actuarial World HUD">
+      <div>
+        <span>Mode</span>
+        <strong>Actuarial City</strong>
+      </div>
+      <div>
+        <span>Move</span>
+        <strong>WASD / Arrow Keys</strong>
+      </div>
+      <div>
+        <span>Explore</span>
+        <strong>Enter near a zone</strong>
+      </div>
+      <div>
+        <span>Close</span>
+        <strong>Esc</strong>
+      </div>
+      <div className="actuarialWorldNearby">
+        <span>Nearby Zone</span>
+        <strong>{nearbyZone?.name ?? 'Move toward a glowing zone'}</strong>
+      </div>
+      <button onClick={onReturnDefault} type="button">
+        Return to Default Mode
+      </button>
+    </aside>
   )
-  const isInsideBuilding = Boolean(activeBuilding)
+}
 
-  const openBuilding = useCallback((building) => {
-    setActiveBuildingId(building.id)
+function ActuarialWorldMiniMap({ nearbyZone }) {
+  return (
+    <aside className="miniMap actuarialWorldMiniMap" aria-label="World zones map">
+      <span className="miniMapTitle">Zone Map</span>
+      <div className="miniMapSurface">
+        {worldZones.map((zone) => (
+          <span
+            className={`miniMapBuilding theme-${zone.theme}${
+              nearbyZone?.id === zone.id ? ' isNearby' : ''
+            }`}
+            key={zone.id}
+            style={{
+              left: `${(zone.position.x / WORLD_SIZE.width) * 100}%`,
+              top: `${(zone.position.y / WORLD_SIZE.height) * 100}%`,
+            }}
+            title={zone.name}
+          />
+        ))}
+        <span className="miniMapPlayer" style={{ left: '50%', top: '55%' }} />
+      </div>
+      <p>Camera follows your avatar. Bright dots are explorable zones.</p>
+    </aside>
+  )
+}
+
+export function GamingMode({ onNavigate }) {
+  const [activeZoneId, setActiveZoneId] = useState(null)
+  const [nearbyZoneId, setNearbyZoneId] = useState(null)
+
+  const activeZone = useMemo(
+    () => worldZones.find((zone) => zone.id === activeZoneId) ?? null,
+    [activeZoneId],
+  )
+  const nearbyZone = useMemo(
+    () => worldZones.find((zone) => zone.id === nearbyZoneId) ?? null,
+    [nearbyZoneId],
+  )
+
+  const openZone = useCallback((zoneId) => {
+    setActiveZoneId(zoneId)
   }, [])
 
-  const closeBuilding = useCallback(() => {
-    setActiveBuildingId(null)
+  const closeZone = useCallback(() => {
+    setActiveZoneId(null)
   }, [])
 
-  const pressedKeys = useKeyboardControls({
-    disabled: isInsideBuilding,
-    onEnter: () => {
-      if (!activeBuildingId && nearbyBuildingRef.current) {
-        openBuilding(nearbyBuildingRef.current)
-      }
-    },
-    onEscape: closeBuilding,
-  })
-
-  const { direction, isMoving, moveBy, playerPosition } = usePlayerMovement({
-    bounds: WORLD_BOUNDS,
-    disabled: isInsideBuilding,
-    initialPosition: PLAYER_START,
-    pressedKeys,
-    speed: PLAYER_SPEED,
-  })
-
-  const { nearbyBuilding } = useWorldInteraction({
-    buildings: portfolioBuildings,
-    interactionDistance: INTERACTION_DISTANCE,
-    playerPosition,
-  })
+  const handleZoneFocus = useCallback((zoneId) => {
+    setNearbyZoneId(zoneId)
+  }, [])
 
   useEffect(() => {
-    nearbyBuildingRef.current = nearbyBuilding
-  }, [nearbyBuilding])
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        closeZone()
+      }
+    }
+
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [closeZone])
 
   return (
     <main className="site gamingExperience" id="top">
       <section className="gamingIntro">
         <div>
           <span className="gameKicker">Gaming Mode Beta</span>
-          <h1>Explore Sanjaya&apos;s portfolio city.</h1>
+          <h1>Actuarial World</h1>
           <p>
-            Move through an original retro-inspired actuarial-tech city. Each
-            building opens a different part of the portfolio.
+            A futuristic portfolio city where actuarial labs, valuation towers,
+            dashboards, and app portals become explorable locations.
           </p>
         </div>
       </section>
 
-      <section className="gamingLayout">
-        <GameHUD
-          nearbyBuilding={nearbyBuilding}
+      <section className="gamingLayout actuarialWorldLayout">
+        <ActuarialWorldHud
+          nearbyZone={nearbyZone}
           onReturnDefault={() => onNavigate('/default')}
         />
 
-        <GameWorld
-          bounds={WORLD_BOUNDS}
-          buildings={portfolioBuildings}
-          direction={direction}
-          isMoving={isMoving}
-          nearbyBuilding={nearbyBuilding}
-          onOpenBuilding={openBuilding}
-          onTouchMove={moveBy}
-          playerPosition={playerPosition}
-        />
+        <div className="gameWorldPanel actuarialWorldPanel">
+          <div className="actuarialWorldDesktopNote">
+            Best experienced on desktop with keyboard. Tap glowing buildings to
+            open zones on touch devices.
+          </div>
+          <Suspense
+            fallback={
+              <div className="actuarialWorldLoading">
+                Loading Phaser world...
+              </div>
+            }
+          >
+            <ActuarialWorldGame
+              isPanelOpen={Boolean(activeZone)}
+              onZoneActivate={openZone}
+              onZoneFocus={handleZoneFocus}
+            />
+          </Suspense>
+          <div
+            className={`interactionPrompt${nearbyZone ? '' : ' isIdle'}`}
+            aria-live="polite"
+          >
+            {nearbyZone ? (
+              <>
+                <kbd>Enter</kbd> Explore {nearbyZone.name}
+              </>
+            ) : (
+              'Move near a glowing zone to explore'
+            )}
+          </div>
+        </div>
 
-        <MiniMap
-          bounds={WORLD_BOUNDS}
-          buildings={portfolioBuildings}
-          playerPosition={playerPosition}
-        />
+        <ActuarialWorldMiniMap nearbyZone={nearbyZone} />
       </section>
 
-      <BuildingContentPanel building={activeBuilding} onClose={closeBuilding} />
+      <BuildingContentPanel building={activeZone} onClose={closeZone} />
     </main>
   )
 }

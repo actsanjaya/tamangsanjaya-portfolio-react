@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Experience Director"
+  short_description: "Guide creative portfolio mode work"
+  default_prompt: "Use this skill when improving Sanjaya Tamang's portfolio creative modes, game worlds, immersive scenes, gesture experiences, or premium interactive UI."

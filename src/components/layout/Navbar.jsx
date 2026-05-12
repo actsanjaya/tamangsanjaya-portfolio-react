@@ -58,7 +58,11 @@ export function Navbar({ activeMode, modes, onNavigate, siteData }) {
 
         <a
           className="navButton"
-          href={isDefaultMode ? '#contact' : `mailto:${siteData.email}`}
+          href={isDefaultMode ? '#contact' : '/default#contact'}
+          onClick={(event) => {
+            event.preventDefault()
+            onNavigate('/default#contact')
+          }}
         >
           ✉ Contact Me
         </a>

@@ -1,6 +1,7 @@
 import { DefaultMode } from '../modes/default/DefaultMode.jsx'
 import { GestureMode } from '../modes/gesture/GestureMode.jsx'
 import { GamingMode } from '../modes/gaming/GamingMode.jsx'
+import { ImmersiveMode } from '../modes/immersive/ImmersiveMode.jsx'
 import { ComingSoonMode } from '../modes/future/ComingSoonMode.jsx'
 
 export const modes = [
@@ -33,6 +34,17 @@ export const modes = [
     status: 'beta',
     icon: '◆',
     component: GamingMode,
+    showInSwitcher: true,
+  },
+  {
+    id: 'immersive',
+    name: 'Immersive Mode',
+    description:
+      'A cinematic scroll experience through actuarial automation, dashboards, valuation models, and future apps.',
+    path: '/immersive',
+    status: 'beta',
+    icon: '*',
+    component: ImmersiveMode,
     showInSwitcher: true,
   },
   {

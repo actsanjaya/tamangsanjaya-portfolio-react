@@ -1,0 +1,259 @@
+.immersiveMode {
+  position: relative;
+  height: calc(100vh - 82px);
+  min-height: 620px;
+  overflow: hidden;
+  color: #06142e;
+  background: #f8fbff;
+  isolation: isolate;
+}
+
+.cinematicViewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.cinematicScene {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.015);
+  transition:
+    opacity 760ms ease,
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cinematicScene.isActive {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.cinematicSceneBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  transform: scale(1.04);
+}
+
+.cinematicScene.isActive .cinematicSceneBackground {
+  animation: cinematicDrift 14s ease-in-out infinite alternate;
+}
+
+.cinematicSceneShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(248, 251, 255, 0.88) 0%, rgba(248, 251, 255, 0.66) 35%, rgba(248, 251, 255, 0.18) 72%, rgba(248, 251, 255, 0.05) 100%),
+    radial-gradient(circle at 22% 48%, rgba(255, 255, 255, 0.7), transparent 38%);
+  z-index: 1;
+}
+
+.cinematicScene-final-cta .cinematicSceneShade,
+.cinematicScene-project-world .cinematicSceneShade {
+  background:
+    linear-gradient(90deg, rgba(248, 251, 255, 0.9) 0%, rgba(248, 251, 255, 0.72) 42%, rgba(248, 251, 255, 0.22) 78%, rgba(248, 251, 255, 0.08) 100%),
+    radial-gradient(circle at 20% 52%, rgba(255, 255, 255, 0.78), transparent 42%);
+}
+
+.cinematicSceneGrain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image:
+    radial-gradient(circle at 12% 24%, rgba(6, 20, 46, 0.18) 0 1px, transparent 1px),
+    radial-gradient(circle at 72% 64%, rgba(255, 255, 255, 0.38) 0 1px, transparent 1px);
+  background-size: 22px 22px, 28px 28px;
+  mix-blend-mode: soft-light;
+}
+
+.cinematicSceneContent {
+  position: relative;
+  z-index: 3;
+  width: min(760px, 88vw);
+  margin-left: clamp(1.5rem, 7vw, 8rem);
+  padding: clamp(1.25rem, 3vw, 2.2rem);
+  border-left: 2px solid rgba(11, 99, 246, 0.42);
+  color: #06142e;
+  text-wrap: balance;
+  transform: translateY(24px);
+  opacity: 0;
+  transition:
+    opacity 620ms ease 220ms,
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1) 220ms;
+}
+
+.cinematicScene.isActive .cinematicSceneContent {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cinematicSceneNumber {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: #0b63f6;
+  font-size: 0.82rem;
+  font-weight: 950;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cinematicSceneContent h1 {
+  margin: 0;
+  color: #06142e;
+  font-size: clamp(3.6rem, 8vw, 8.5rem);
+  font-weight: 950;
+  line-height: 0.88;
+  letter-spacing: 0;
+}
+
+.cinematicSceneContent p {
+  max-width: 680px;
+  margin: 26px 0 0;
+  color: rgba(6, 20, 46, 0.78);
+  font-size: clamp(1.12rem, 1.8vw, 1.62rem);
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.cinematicActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.cinematicAction {
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid rgba(11, 99, 246, 0.3);
+  border-radius: 999px;
+  color: #06142e;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.14);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 850;
+  backdrop-filter: blur(12px);
+}
+
+.cinematicAction-primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #0b63f6, #0644bd);
+  box-shadow: 0 18px 42px rgba(11, 99, 246, 0.26);
+}
+
+.cinematicAction:hover,
+.cinematicAction:focus-visible {
+  transform: translateY(-2px);
+}
+
+.cinematicHint {
+  position: absolute;
+  right: clamp(1rem, 4vw, 4rem);
+  bottom: clamp(1rem, 4vw, 3rem);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(6, 20, 46, 0.68);
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cinematicHint::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  animation: cinematicHintPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes cinematicDrift {
+  from {
+    transform: scale(1.04) translate3d(-0.7%, -0.6%, 0);
+  }
+
+  to {
+    transform: scale(1.09) translate3d(0.8%, 0.7%, 0);
+  }
+}
+
+@keyframes cinematicHintPulse {
+  50% {
+    transform: translateY(5px) rotate(45deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .immersiveMode {
+    height: calc(100vh - 96px);
+    min-height: 620px;
+  }
+
+  .cinematicSceneShade {
+    background:
+      linear-gradient(180deg, rgba(248, 251, 255, 0.88) 0%, rgba(248, 251, 255, 0.64) 48%, rgba(248, 251, 255, 0.18) 100%),
+      radial-gradient(circle at 34% 38%, rgba(255, 255, 255, 0.72), transparent 42%);
+  }
+
+  .cinematicSceneContent {
+    width: min(100% - 28px, 720px);
+    margin: 0 auto;
+    align-self: end;
+    padding-bottom: clamp(4.5rem, 16vh, 8rem);
+  }
+
+  .cinematicSceneContent h1 {
+    font-size: clamp(3rem, 14vw, 5.5rem);
+  }
+}
+
+@media (max-width: 620px) {
+  .cinematicSceneContent {
+    border-left: 0;
+    padding-inline: 0;
+  }
+
+  .cinematicActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cinematicHint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematicScene,
+  .cinematicSceneContent,
+  .cinematicSceneBackground,
+  .cinematicHint::after,
+  .cinematicAction {
+    animation: none !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .cinematicSceneBackground {
+    transform: scale(1.04);
+  }
+}

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import portfolioPromo from '../../assets/portfolio-promo.mp4'
 import { Button } from '../../components/ui/Button.jsx'
 import { Card } from '../../components/ui/Card.jsx'
@@ -17,6 +17,23 @@ const projectActionConfig = [
   { key: 'github', label: 'GitHub' },
   { key: 'download', label: 'Download Template', onlyFor: 'Excel Tool' },
 ]
+
+const copyTextToClipboard = async (text) => {
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    await navigator.clipboard.writeText(text)
+    return
+  }
+
+  const textArea = document.createElement('textarea')
+  textArea.value = text
+  textArea.setAttribute('readonly', '')
+  textArea.style.position = 'fixed'
+  textArea.style.left = '-9999px'
+  document.body.appendChild(textArea)
+  textArea.select()
+  document.execCommand('copy')
+  document.body.removeChild(textArea)
+}
 
 function ProjectAction({ href, label }) {
   if (href) {
@@ -87,6 +104,35 @@ function PortfolioProjectCard({ project }) {
 export function DefaultMode({ siteData }) {
   const { about, focusAreas, hero, skills } = defaultModeData
   const [activeProjectFilter, setActiveProjectFilter] = useState('all')
+  const [copiedType, setCopiedType] = useState(null)
+  const [isContactOptionsOpen, setIsContactOptionsOpen] = useState(false)
+  const copiedTimeoutRef = useRef(null)
+  const phoneHref = `tel:${siteData.phone.replace(/\s+/g, '')}`
+  const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+    siteData.email,
+  )}&su=Portfolio%20Inquiry`
+
+  useEffect(
+    () => () => {
+      if (copiedTimeoutRef.current) {
+        window.clearTimeout(copiedTimeoutRef.current)
+      }
+    },
+    [],
+  )
+
+  const copyContactValue = async (type, value) => {
+    await copyTextToClipboard(value)
+    setCopiedType(type)
+
+    if (copiedTimeoutRef.current) {
+      window.clearTimeout(copiedTimeoutRef.current)
+    }
+
+    copiedTimeoutRef.current = window.setTimeout(() => {
+      setCopiedType(null)
+    }, 2000)
+  }
 
   const filteredProjects = useMemo(() => {
     if (activeProjectFilter === 'all') {
@@ -278,16 +324,115 @@ export function DefaultMode({ siteData }) {
           </p>
 
           <div className="contactDetails">
-            <span>✉ {siteData.email}</span>
-            <span>📍 {siteData.location}</span>
-            <a href={siteData.domain}>🌐 {siteData.domain}</a>
-            <a href={siteData.linkedin}>🔗 {siteData.linkedin}</a>
-            <span>📞 {siteData.phone}</span>
+            <div className="contactDetailItem">
+              <span>Email</span>
+              <a href={gmailComposeUrl} rel="noreferrer" target="_blank">
+                {siteData.email}
+              </a>
+              <button
+                onClick={() => copyContactValue('email', siteData.email)}
+                type="button"
+              >
+                {copiedType === 'email' ? 'Copied' : 'Copy'}
+              </button>
+            </div>
+            <div className="contactDetailItem">
+              <span>Location</span>
+              <strong>{siteData.location}</strong>
+            </div>
+            <div className="contactDetailItem">
+              <span>Website</span>
+              <a href={siteData.domain} rel="noreferrer" target="_blank">
+                {siteData.domain}
+              </a>
+            </div>
+            <div className="contactDetailItem">
+              <span>LinkedIn</span>
+              <a href={siteData.linkedin} rel="noreferrer" target="_blank">
+                {siteData.linkedin}
+              </a>
+            </div>
+            <div className="contactDetailItem">
+              <span>Phone</span>
+              <strong>{siteData.phone}</strong>
+              <button
+                onClick={() => copyContactValue('phone', siteData.phone)}
+                type="button"
+              >
+                {copiedType === 'phone' ? 'Copied' : 'Copy'}
+              </button>
+            </div>
           </div>
         </div>
 
         <div className="contactCard">
-          <a href={`mailto:${siteData.email}`}>Send a Message</a>
+          <span className="contactCardKicker">Preferred contact options</span>
+          <h3>Choose how to connect</h3>
+          <p>
+            Open Gmail in the browser, copy direct contact details, or connect on
+            LinkedIn without launching a desktop mail app.
+          </p>
+
+          <button
+            aria-expanded={isContactOptionsOpen}
+            className="contactPrimaryButton"
+            onClick={() => setIsContactOptionsOpen((isOpen) => !isOpen)}
+            type="button"
+          >
+            {isContactOptionsOpen ? 'Hide Contact Options' : 'Show Contact Options'}
+          </button>
+
+          {isContactOptionsOpen ? (
+            <div className="contactOptionsPanel" aria-label="Contact options">
+              <article className="contactOptionCard">
+                <span>Phone</span>
+                <strong>{siteData.phone}</strong>
+                <button
+                  className="contactOptionPrimary"
+                  onClick={() => copyContactValue('phone', siteData.phone)}
+                  type="button"
+                >
+                  {copiedType === 'phone' ? 'Phone number copied' : 'Copy Phone'}
+                </button>
+                <a className="contactOptionSecondary" href={phoneHref}>
+                  Call
+                </a>
+              </article>
+
+              <article className="contactOptionCard">
+                <span>Email</span>
+                <strong>{siteData.email}</strong>
+                <a
+                  className="contactOptionPrimary"
+                  href={gmailComposeUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Open Gmail
+                </a>
+                <button
+                  className="contactOptionSecondary"
+                  onClick={() => copyContactValue('email', siteData.email)}
+                  type="button"
+                >
+                  {copiedType === 'email' ? 'Email copied' : 'Copy Email'}
+                </button>
+              </article>
+
+              <article className="contactOptionCard">
+                <span>LinkedIn</span>
+                <strong>Professional profile</strong>
+                <a
+                  className="contactOptionPrimary"
+                  href={siteData.linkedin}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Connect on LinkedIn
+                </a>
+              </article>
+            </div>
+          ) : null}
         </div>
       </section>
     </main>
