@@ -1,9 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import portfolioPromo from '../../assets/portfolio-promo.mp4'
 import { Button } from '../../components/ui/Button.jsx'
 import { HeroStaticMascot } from '../default/components/HeroStaticMascot.jsx'
 import { defaultModeData } from '../default/defaultModeData.js'
 import { testingModeData } from './testingModeData.js'
+import {
+  cardReveal,
+  contactPanelReveal,
+  containerStagger,
+  heroContainer,
+  heroItem,
+  heroVisualReveal,
+  reducedMotionVariants,
+  sectionReveal,
+  softHover,
+  viewportOnce,
+} from './testingMotion.js'
 import './testingMode.css'
 
 const copyTextToClipboard = async (text) => {
@@ -23,9 +36,166 @@ const copyTextToClipboard = async (text) => {
   document.body.removeChild(textArea)
 }
 
-function TestingAboutAndSkills({ about }) {
+function RevealContainer({ as = 'section', children, enabled, variants, ...props }) {
+  const motionProps = enabled
+    ? {
+        initial: 'hidden',
+        variants,
+        viewport: viewportOnce,
+        whileInView: 'visible',
+      }
+    : {}
+
+  if (as === 'div') {
+    return enabled ? (
+      <motion.div {...props} {...motionProps}>
+        {children}
+      </motion.div>
+    ) : (
+      <div {...props}>{children}</div>
+    )
+  }
+
+  return enabled ? (
+    <motion.section {...props} {...motionProps}>
+      {children}
+    </motion.section>
+  ) : (
+    <section {...props}>{children}</section>
+  )
+}
+
+function RevealGroup({ children, enabled, variants = containerStagger, ...props }) {
+  const motionProps = enabled
+    ? {
+        initial: 'hidden',
+        variants,
+        viewport: viewportOnce,
+        whileInView: 'visible',
+      }
+    : {}
+
+  return enabled ? (
+    <motion.div {...props} {...motionProps}>
+      {children}
+    </motion.div>
+  ) : (
+    <div {...props}>{children}</div>
+  )
+}
+
+function RevealItem({ children, enabled, hover, variants, ...props }) {
+  const motionProps = enabled
+    ? {
+        variants,
+        whileHover: hover,
+      }
+    : {}
+
+  return enabled ? (
+    <motion.article {...props} {...motionProps}>
+      {children}
+    </motion.article>
+  ) : (
+    <article {...props}>{children}</article>
+  )
+}
+
+function HeroRevealGroup({ children, enabled, variants, ...props }) {
+  if (!enabled) {
+    return <div {...props}>{children}</div>
+  }
+
   return (
-    <div className="testingAboutSkillsFlow">
+    <motion.div {...props} animate="visible" initial="hidden" variants={variants}>
+      {children}
+    </motion.div>
+  )
+}
+
+function HeroRevealItem({ as = 'div', children, enabled, variants, ...props }) {
+  if (!enabled) {
+    if (as === 'p') {
+      return <p {...props}>{children}</p>
+    }
+
+    if (as === 'h1') {
+      return <h1 {...props}>{children}</h1>
+    }
+
+    return <div {...props}>{children}</div>
+  }
+
+  if (as === 'p') {
+    return (
+      <motion.p {...props} variants={variants}>
+        {children}
+      </motion.p>
+    )
+  }
+
+  if (as === 'h1') {
+    return (
+      <motion.h1 {...props} variants={variants}>
+        {children}
+      </motion.h1>
+    )
+  }
+
+  return (
+    <motion.div {...props} variants={variants}>
+      {children}
+    </motion.div>
+  )
+}
+
+function HeroVisualReveal({ children, enabled, variants, ...props }) {
+  if (!enabled) {
+    return <div {...props}>{children}</div>
+  }
+
+  return (
+    <motion.div {...props} animate="visible" initial="hidden" variants={variants}>
+      {children}
+    </motion.div>
+  )
+}
+
+function ContactOptionsPanel({
+  children,
+  enabled,
+  panelVariants,
+}) {
+  if (!enabled) {
+    return (
+      <div className="testingContactOptionsPanel" aria-label="Preferred contact options">
+        {children}
+      </div>
+    )
+  }
+
+  return (
+    <motion.div
+      className="testingContactOptionsPanel"
+      aria-label="Preferred contact options"
+      animate="visible"
+      exit="exit"
+      initial="hidden"
+      variants={panelVariants}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function TestingAboutAndSkills({ about, cardVariants, itemHover, revealEnabled, sectionVariants }) {
+  return (
+    <RevealContainer
+      as="div"
+      className="testingAboutSkillsFlow"
+      enabled={revealEnabled}
+      variants={sectionVariants}
+    >
       <section className="testingAboutSection" id="about" aria-labelledby="testing-about-title">
         <div className="testingAboutCopy">
           <p className="testingSectionEyebrow">About Me</p>
@@ -45,9 +215,15 @@ function TestingAboutAndSkills({ about }) {
           <p className="testingSectionEyebrow">Skills</p>
         </div>
 
-        <div className="testingGroupedSkillsGrid">
+        <RevealGroup className="testingGroupedSkillsGrid" enabled={revealEnabled}>
           {testingModeData.skills.map((skillGroup) => (
-            <article className="testingGroupedSkillCard" key={skillGroup.group}>
+            <RevealItem
+              className="testingGroupedSkillCard"
+              enabled={revealEnabled}
+              hover={itemHover}
+              key={skillGroup.group}
+              variants={cardVariants}
+            >
               <span>{skillGroup.accent}</span>
               <h3>{skillGroup.group}</h3>
               <ul>
@@ -55,17 +231,22 @@ function TestingAboutAndSkills({ about }) {
                   <li key={skill}>{skill}</li>
                 ))}
               </ul>
-            </article>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </section>
-    </div>
+    </RevealContainer>
   )
 }
 
-function TestingProjectCard({ project }) {
+function TestingProjectCard({ cardVariants, itemHover, project, revealEnabled }) {
   return (
-    <article className="testingProjectCard">
+    <RevealItem
+      className="testingProjectCard"
+      enabled={revealEnabled}
+      hover={itemHover}
+      variants={cardVariants}
+    >
       <h3>{project.title}</h3>
       <p>{project.description}</p>
 
@@ -74,48 +255,64 @@ function TestingProjectCard({ project }) {
           <span key={tag}>{tag}</span>
         ))}
       </div>
-
-      <button className="testingProjectAction" type="button" disabled>
-        Coming Soon
-      </button>
-    </article>
+    </RevealItem>
   )
 }
 
-function TestingProjectsSection() {
+function TestingProjectsSection({ cardVariants, itemHover, revealEnabled, sectionVariants }) {
   const { eyebrow } = testingModeData.projectSection
 
   return (
-    <section id="projects" className="testingProjectsSection" aria-labelledby="testing-projects-title">
+    <RevealContainer
+      id="projects"
+      className="testingProjectsSection"
+      aria-labelledby="testing-projects-title"
+      enabled={revealEnabled}
+      variants={sectionVariants}
+    >
       <div className="testingProjectsHeader">
         <p className="testingSectionEyebrow">{eyebrow}</p>
       </div>
 
-      <div className="testingProjectsGrid">
+      <RevealGroup className="testingProjectsGrid" enabled={revealEnabled}>
         {testingModeData.projects.map((project) => (
-          <TestingProjectCard key={project.title} project={project} />
+          <TestingProjectCard
+            cardVariants={cardVariants}
+            itemHover={itemHover}
+            key={project.title}
+            project={project}
+            revealEnabled={revealEnabled}
+          />
         ))}
-      </div>
-    </section>
+      </RevealGroup>
+    </RevealContainer>
   )
 }
 
-function TestingExperienceSection() {
+function TestingExperienceSection({ cardVariants, itemHover, revealEnabled, sectionVariants }) {
   const { eyebrow } = testingModeData.experienceSection
 
   return (
-    <section
+    <RevealContainer
       id="experience"
       className="testingExperienceSection"
       aria-labelledby="testing-experience-title"
+      enabled={revealEnabled}
+      variants={sectionVariants}
     >
       <div className="testingExperienceHeader">
         <p className="testingSectionEyebrow">{eyebrow}</p>
       </div>
 
-      <div className="testingExperienceList">
+      <RevealGroup className="testingExperienceList" enabled={revealEnabled}>
         {testingModeData.experience.map((experience) => (
-          <article className="testingExperienceCard" key={`${experience.company}-${experience.role}`}>
+          <RevealItem
+            className="testingExperienceCard"
+            enabled={revealEnabled}
+            hover={itemHover}
+            key={`${experience.company}-${experience.role}`}
+            variants={cardVariants}
+          >
             <div className="testingExperienceMeta">
               <span>{experience.company}</span>
               <h3>{experience.role}</h3>
@@ -128,19 +325,21 @@ function TestingExperienceSection() {
                 <span key={item}>{item}</span>
               ))}
             </div>
-          </article>
+          </RevealItem>
         ))}
-      </div>
-    </section>
+      </RevealGroup>
+    </RevealContainer>
   )
 }
 
-function TestingCertificationsSection() {
+function TestingCertificationsSection({ cardVariants, itemHover, revealEnabled, sectionVariants }) {
   return (
-    <section
+    <RevealContainer
       id="certifications"
       className="testingCertificationsSection"
       aria-labelledby="testing-certifications-title"
+      enabled={revealEnabled}
+      variants={sectionVariants}
     >
       <div className="testingCertificationsHeader">
         <p className="testingSectionEyebrow" id="testing-certifications-title">
@@ -148,63 +347,97 @@ function TestingCertificationsSection() {
         </p>
       </div>
 
-      <div className="testingCertificationGrid">
+      <RevealGroup className="testingCertificationGrid" enabled={revealEnabled}>
         {testingModeData.certifications.map((certification) => (
-          <article className="testingCertificationCard" key={certification.title}>
+          <RevealItem
+            className="testingCertificationCard"
+            enabled={revealEnabled}
+            hover={itemHover}
+            key={certification.title}
+            variants={cardVariants}
+          >
             <h3>{certification.title}</h3>
-          </article>
+          </RevealItem>
         ))}
-      </div>
-    </section>
+      </RevealGroup>
+    </RevealContainer>
   )
 }
 
-function TestingTechnicalFocusSection() {
+function TestingTechnicalFocusSection({ cardVariants, itemHover, revealEnabled, sectionVariants }) {
   const { eyebrow } = testingModeData.technicalFocusSection
 
   return (
-    <section
+    <RevealContainer
       id="technical-focus"
       className="testingTechnicalFocus"
       aria-labelledby="testing-technical-focus-title"
+      enabled={revealEnabled}
+      variants={sectionVariants}
     >
       <div className="testingTechnicalFocusHeader">
         <p className="testingSectionEyebrow">{eyebrow}</p>
       </div>
 
-      <div className="testingFocusGrid">
+      <RevealGroup className="testingFocusGrid" enabled={revealEnabled}>
         {testingModeData.technicalFocus.map((focusArea, index) => (
-          <article className="testingFocusCard" key={focusArea.title}>
+          <RevealItem
+            className="testingFocusCard"
+            enabled={revealEnabled}
+            hover={itemHover}
+            key={focusArea.title}
+            variants={cardVariants}
+          >
             <span>{String(index + 1).padStart(2, '0')}</span>
             <h3>{focusArea.title}</h3>
             <p>{focusArea.text}</p>
-          </article>
+          </RevealItem>
         ))}
-      </div>
-    </section>
+      </RevealGroup>
+    </RevealContainer>
   )
 }
 
 function TestingContactSection({
+  cardVariants,
   copiedType,
   copyContactValue,
   gmailComposeUrl,
   isContactOptionsOpen,
+  itemHover,
+  panelVariants,
   phoneHref,
+  revealEnabled,
+  sectionVariants,
   setIsContactOptionsOpen,
   siteData,
 }) {
   const { eyebrow } = testingModeData.contactSection
 
   return (
-    <section id="contact" className="testingContact" aria-labelledby="testing-contact-title">
+    <RevealContainer
+      id="contact"
+      className="testingContact"
+      aria-labelledby="testing-contact-title"
+      enabled={revealEnabled}
+      variants={sectionVariants}
+    >
       <div className="testingContactHeader">
         <p className="testingSectionEyebrow">{eyebrow}</p>
       </div>
 
       <div className="testingContactGrid">
-        <div className="testingContactDetails" aria-label="Visible contact details">
-          <article className="testingContactRow">
+        <RevealGroup
+          className="testingContactDetails"
+          aria-label="Visible contact details"
+          enabled={revealEnabled}
+        >
+          <RevealItem
+            className="testingContactRow"
+            enabled={revealEnabled}
+            hover={itemHover}
+            variants={cardVariants}
+          >
             <span>Email</span>
             <a href={gmailComposeUrl} rel="noreferrer" target="_blank">
               {siteData.email}
@@ -212,35 +445,55 @@ function TestingContactSection({
             <button onClick={() => copyContactValue('email', siteData.email)} type="button">
               {copiedType === 'email' ? 'Copied' : 'Copy'}
             </button>
-          </article>
+          </RevealItem>
 
-          <article className="testingContactRow">
+          <RevealItem
+            className="testingContactRow"
+            enabled={revealEnabled}
+            hover={itemHover}
+            variants={cardVariants}
+          >
             <span>Location</span>
             <strong>{siteData.location}</strong>
-          </article>
+          </RevealItem>
 
-          <article className="testingContactRow">
+          <RevealItem
+            className="testingContactRow"
+            enabled={revealEnabled}
+            hover={itemHover}
+            variants={cardVariants}
+          >
             <span>Website</span>
             <a href={siteData.domain} rel="noreferrer" target="_blank">
               {siteData.domain}
             </a>
-          </article>
+          </RevealItem>
 
-          <article className="testingContactRow">
+          <RevealItem
+            className="testingContactRow"
+            enabled={revealEnabled}
+            hover={itemHover}
+            variants={cardVariants}
+          >
             <span>LinkedIn</span>
             <a href={siteData.linkedin} rel="noreferrer" target="_blank">
               {siteData.linkedin}
             </a>
-          </article>
+          </RevealItem>
 
-          <article className="testingContactRow">
+          <RevealItem
+            className="testingContactRow"
+            enabled={revealEnabled}
+            hover={itemHover}
+            variants={cardVariants}
+          >
             <span>Phone</span>
             <strong>{siteData.phone}</strong>
             <button onClick={() => copyContactValue('phone', siteData.phone)} type="button">
               {copiedType === 'phone' ? 'Copied' : 'Copy'}
             </button>
-          </article>
-        </div>
+          </RevealItem>
+        </RevealGroup>
 
         <div className="testingContactActions">
           <span>Preferred contact options</span>
@@ -259,68 +512,99 @@ function TestingContactSection({
             {isContactOptionsOpen ? 'Hide contact options' : 'Show contact options'}
           </button>
 
-          {isContactOptionsOpen ? (
-            <div className="testingContactOptionsPanel" aria-label="Preferred contact options">
-              <article className="testingContactOptionCard">
-                <span>Email</span>
-                <strong>{siteData.email}</strong>
-                <a
-                  className="testingContactOptionPrimary"
-                  href={gmailComposeUrl}
-                  rel="noreferrer"
-                  target="_blank"
+          <AnimatePresence initial={false}>
+            {isContactOptionsOpen ? (
+              <ContactOptionsPanel
+                enabled={revealEnabled}
+                panelVariants={panelVariants}
+              >
+                <RevealItem
+                  className="testingContactOptionCard"
+                  enabled={revealEnabled}
+                  hover={itemHover}
+                  key="email"
+                  variants={cardVariants}
                 >
-                  Open Gmail
-                </a>
-                <button
-                  className="testingContactOptionSecondary"
-                  onClick={() => copyContactValue('email', siteData.email)}
-                  type="button"
-                >
-                  {copiedType === 'email' ? 'Email copied' : 'Copy email'}
-                </button>
-              </article>
+                  <span>Email</span>
+                  <strong>{siteData.email}</strong>
+                  <a
+                    className="testingContactOptionPrimary"
+                    href={gmailComposeUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Open Gmail
+                  </a>
+                  <button
+                    className="testingContactOptionSecondary"
+                    onClick={() => copyContactValue('email', siteData.email)}
+                    type="button"
+                  >
+                    {copiedType === 'email' ? 'Email copied' : 'Copy email'}
+                  </button>
+                </RevealItem>
 
-              <article className="testingContactOptionCard">
-                <span>LinkedIn</span>
-                <strong>Professional profile</strong>
-                <a
-                  className="testingContactOptionPrimary"
-                  href={siteData.linkedin}
-                  rel="noreferrer"
-                  target="_blank"
+                <RevealItem
+                  className="testingContactOptionCard"
+                  enabled={revealEnabled}
+                  hover={itemHover}
+                  key="linkedin"
+                  variants={cardVariants}
                 >
-                  Connect on LinkedIn
-                </a>
-              </article>
+                  <span>LinkedIn</span>
+                  <strong>Professional profile</strong>
+                  <a
+                    className="testingContactOptionPrimary"
+                    href={siteData.linkedin}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Connect on LinkedIn
+                  </a>
+                </RevealItem>
 
-              <article className="testingContactOptionCard">
-                <span>Phone</span>
-                <strong>{siteData.phone}</strong>
-                <button
-                  className="testingContactOptionPrimary"
-                  onClick={() => copyContactValue('phone', siteData.phone)}
-                  type="button"
+                <RevealItem
+                  className="testingContactOptionCard"
+                  enabled={revealEnabled}
+                  hover={itemHover}
+                  key="phone"
+                  variants={cardVariants}
                 >
-                  {copiedType === 'phone' ? 'Phone copied' : 'Copy phone'}
-                </button>
-                <a className="testingContactOptionSecondary" href={phoneHref}>
-                  Call
-                </a>
-              </article>
-            </div>
-          ) : null}
+                  <span>Phone</span>
+                  <strong>{siteData.phone}</strong>
+                  <button
+                    className="testingContactOptionPrimary"
+                    onClick={() => copyContactValue('phone', siteData.phone)}
+                    type="button"
+                  >
+                    {copiedType === 'phone' ? 'Phone copied' : 'Copy phone'}
+                  </button>
+                  <a className="testingContactOptionSecondary" href={phoneHref}>
+                    Call
+                  </a>
+                </RevealItem>
+              </ContactOptionsPanel>
+            ) : null}
+          </AnimatePresence>
         </div>
       </div>
-    </section>
+    </RevealContainer>
   )
 }
 
-export function TestingMode({ siteData }) {
+export function TestingMode({ enableSectionReveal = true, siteData }) {
   const { about, hero } = defaultModeData
   const [copiedType, setCopiedType] = useState(null)
   const [isContactOptionsOpen, setIsContactOptionsOpen] = useState(false)
   const copiedTimeoutRef = useRef(null)
+  const prefersReducedMotion = useReducedMotion()
+  const revealEnabled = enableSectionReveal
+  const cardVariants = prefersReducedMotion ? reducedMotionVariants.card : cardReveal
+  const heroItemVariants = prefersReducedMotion ? reducedMotionVariants.heroItem : heroItem
+  const heroVisualVariants = prefersReducedMotion ? reducedMotionVariants.heroVisual : heroVisualReveal
+  const itemHover = !prefersReducedMotion && revealEnabled ? softHover : undefined
+  const panelVariants = prefersReducedMotion ? reducedMotionVariants.panel : contactPanelReveal
+  const sectionVariants = prefersReducedMotion ? reducedMotionVariants.section : sectionReveal
   const phoneHref = `tel:${siteData.phone.replace(/\s+/g, '')}`
   const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
     siteData.email,
@@ -351,35 +635,67 @@ export function TestingMode({ siteData }) {
   return (
     <main className="site defaultMode testingDefaultReplica" id="top">
       <section id="home" className="hero">
-        <div className="heroContent">
-          <p className="eyebrow">{hero.eyebrow}</p>
+        <HeroRevealGroup className="heroContent" enabled={revealEnabled} variants={heroContainer}>
+          <HeroRevealItem
+            as="p"
+            className="eyebrow"
+            enabled={revealEnabled}
+            variants={heroItemVariants}
+          >
+            {hero.eyebrow}
+          </HeroRevealItem>
 
-          <h1>
+          <HeroRevealItem as="h1" enabled={revealEnabled} variants={heroItemVariants}>
             {hero.titleLines[0]}
             <span>{hero.titleLines[1]}</span>
-          </h1>
+          </HeroRevealItem>
 
-          <p className="heroRole">
+          <HeroRevealItem
+            as="p"
+            className="heroRole"
+            enabled={revealEnabled}
+            variants={heroItemVariants}
+          >
             {hero.role} <span>•</span> {hero.roleAccent}
-          </p>
+          </HeroRevealItem>
 
-          <p className="heroText">{hero.text}</p>
+          <HeroRevealItem
+            as="p"
+            className="heroText"
+            enabled={revealEnabled}
+            variants={heroItemVariants}
+          >
+            {hero.text}
+          </HeroRevealItem>
 
-          <div className="heroActions">
+          <HeroRevealItem
+            className="heroActions"
+            enabled={revealEnabled}
+            variants={heroItemVariants}
+          >
             <Button href="#projects">💼 View Projects</Button>
             <Button href="#contact" variant="secondary">
               ✉ Get In Touch
             </Button>
-          </div>
+          </HeroRevealItem>
 
-          <div className="heroBadges">
+          <HeroRevealItem
+            className="heroBadges"
+            enabled={revealEnabled}
+            variants={heroItemVariants}
+          >
             {hero.badges.map((badge) => (
               <span key={badge}>{badge}</span>
             ))}
-          </div>
-        </div>
+          </HeroRevealItem>
+        </HeroRevealGroup>
 
-        <div className="heroVisual" aria-label="Portfolio promo video and data visuals">
+        <HeroVisualReveal
+          className="heroVisual"
+          aria-label="Portfolio promo video and data visuals"
+          enabled={revealEnabled}
+          variants={heroVisualVariants}
+        >
           <div className="visualCircle"></div>
           <div className="barChart" aria-hidden="true">
             <span></span>
@@ -407,25 +723,56 @@ export function TestingMode({ siteData }) {
               </video>
             </div>
           </div>
-        </div>
+        </HeroVisualReveal>
       </section>
 
-      <TestingAboutAndSkills about={about} />
+      <TestingAboutAndSkills
+        about={about}
+        cardVariants={cardVariants}
+        itemHover={itemHover}
+        revealEnabled={revealEnabled}
+        sectionVariants={sectionVariants}
+      />
 
-      <TestingProjectsSection />
+      <TestingProjectsSection
+        cardVariants={cardVariants}
+        itemHover={itemHover}
+        revealEnabled={revealEnabled}
+        sectionVariants={sectionVariants}
+      />
 
-      <TestingExperienceSection />
+      <TestingExperienceSection
+        cardVariants={cardVariants}
+        itemHover={itemHover}
+        revealEnabled={revealEnabled}
+        sectionVariants={sectionVariants}
+      />
 
-      <TestingCertificationsSection />
+      <TestingCertificationsSection
+        cardVariants={cardVariants}
+        itemHover={itemHover}
+        revealEnabled={revealEnabled}
+        sectionVariants={sectionVariants}
+      />
 
-      <TestingTechnicalFocusSection />
+      <TestingTechnicalFocusSection
+        cardVariants={cardVariants}
+        itemHover={itemHover}
+        revealEnabled={revealEnabled}
+        sectionVariants={sectionVariants}
+      />
 
       <TestingContactSection
+        cardVariants={cardVariants}
         copiedType={copiedType}
         copyContactValue={copyContactValue}
         gmailComposeUrl={gmailComposeUrl}
         isContactOptionsOpen={isContactOptionsOpen}
+        itemHover={itemHover}
+        panelVariants={panelVariants}
         phoneHref={phoneHref}
+        revealEnabled={revealEnabled}
+        sectionVariants={sectionVariants}
         setIsContactOptionsOpen={setIsContactOptionsOpen}
         siteData={siteData}
       />
