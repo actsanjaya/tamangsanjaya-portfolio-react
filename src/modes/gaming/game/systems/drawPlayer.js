@@ -1,4 +1,4 @@
-import { GAME_ASSET_KEYS } from '../scenes/BootScene.js'
+import { GAME_ANIMATION_KEYS, GAME_ASSET_KEYS } from '../scenes/BootScene.js'
 
 const PLAYER_SPRITE_SIZE = {
   height: 92,
@@ -16,8 +16,11 @@ export function createPlayerAvatar(scene, start) {
   const body = scene.add.graphics()
   const head = scene.add.graphics()
   const sprite = hasPlayerAsset
-    ? scene.add.image(0, -12, GAME_ASSET_KEYS.playerIdle).setDisplaySize(70, 92)
+    ? scene.add
+        .sprite(0, -12, GAME_ASSET_KEYS.playerIdle)
+        .setDisplaySize(PLAYER_SPRITE_SIZE.width, PLAYER_SPRITE_SIZE.height)
     : null
+  sprite?.setOrigin(0.5, 0.5)
   const direction = scene.add.triangle(0, -34, 0, -13, -10, 8, 10, 8, 0xf8fbff, 0.96)
 
   container.add([
@@ -39,6 +42,7 @@ export function createPlayerAvatar(scene, start) {
     shadow,
     sprite,
     trail,
+    usesWalkAnimation: scene.anims.exists(GAME_ANIMATION_KEYS.playerWalk),
     usesSprite: hasPlayerAsset,
   }
 }
@@ -63,6 +67,22 @@ export function redrawPlayerAvatar({ directionName, isMoving, parts, scene }) {
   if (parts.usesSprite) {
     parts.body.clear()
     parts.head.clear()
+    if (isMoving && parts.usesWalkAnimation) {
+      if (
+        !parts.sprite.anims.isPlaying ||
+        parts.sprite.anims.currentAnim?.key !== GAME_ANIMATION_KEYS.playerWalk
+      ) {
+        parts.sprite.play(GAME_ANIMATION_KEYS.playerWalk)
+      }
+    } else {
+      if (parts.sprite.anims.isPlaying) {
+        parts.sprite.stop()
+      }
+      if (parts.sprite.texture.key !== GAME_ASSET_KEYS.playerIdle) {
+        parts.sprite.setTexture(GAME_ASSET_KEYS.playerIdle)
+      }
+    }
+
     parts.sprite.setDisplaySize(
       PLAYER_SPRITE_SIZE.width * pulseScale,
       PLAYER_SPRITE_SIZE.height * pulseScale,

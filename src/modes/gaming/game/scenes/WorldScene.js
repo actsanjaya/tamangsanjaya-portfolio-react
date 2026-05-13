@@ -8,9 +8,9 @@ import {
 import { drawBuilding } from '../systems/drawBuildings.js'
 import {
   drawCityGround,
-  drawCityProps,
   drawRoadNetwork,
 } from '../systems/drawRoads.js'
+import { drawCityProps } from '../systems/drawProps.js'
 import {
   createPlayerAvatar,
   redrawPlayerAvatar,
@@ -45,6 +45,7 @@ export class WorldScene extends Phaser.Scene {
 
     this.drawWorld()
     this.createZones()
+    this.createCityProps()
     this.createPlayer()
     this.createControls()
 
@@ -56,7 +57,6 @@ export class WorldScene extends Phaser.Scene {
   drawWorld() {
     drawCityGround(this)
     drawRoadNetwork(this, this.zones)
-    drawCityProps(this)
 
     this.add
       .text(46, 42, 'ACTUARIAL CITY', {
@@ -90,6 +90,10 @@ export class WorldScene extends Phaser.Scene {
 
   createZones() {
     this.zoneObjects = this.zones.map((zone) => drawBuilding(this, zone))
+  }
+
+  createCityProps() {
+    this.cityProps = drawCityProps(this, this.zones)
   }
 
   createPlayer() {
@@ -238,6 +242,20 @@ export class WorldScene extends Phaser.Scene {
         duration: 160,
         ease: 'Sine.easeOut',
         scale: isNearby ? 1.035 : 1,
+        targets: container,
+      })
+    })
+
+    this.cityProps?.entranceMarkers?.forEach(({ color, container, glow }, zoneId) => {
+      const isNearby = zoneId === nextZoneId
+      container.setAlpha(isNearby ? 1 : 0.72)
+      glow.clear()
+      glow.fillStyle(color, isNearby ? 0.24 : 0.12)
+      glow.fillEllipse(0, 8, isNearby ? 104 : 80, isNearby ? 44 : 34)
+      this.tweens.add({
+        duration: 180,
+        ease: 'Sine.easeOut',
+        scale: isNearby ? 1.18 : 1,
         targets: container,
       })
     })

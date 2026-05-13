@@ -1,4 +1,4 @@
----
+<!-- ---
 name: portfolio-experience-director
 description: Guide Codex as a creative technical director for Sanjaya Tamang's React + Vite portfolio website. Use when improving Gaming Mode, mini-worlds, Phaser/Canvas/WebGL experiences, Immersive Mode, cinematic visuals, Gesture Mode, advanced UI effects, animations, or any creative interactive portfolio mode that should feel premium, futuristic, technical, polished, and engaging while keeping Default Mode professional.
 ---
@@ -133,4 +133,4 @@ After implementation, summarize:
 - dependencies added or removed
 - how to tune the feature later
 - `npm run lint` result
-- `npm run build` result
+- `npm run build` result -->

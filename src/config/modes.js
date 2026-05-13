@@ -2,6 +2,7 @@ import { DefaultMode } from '../modes/default/DefaultMode.jsx'
 import { GestureMode } from '../modes/gesture/GestureMode.jsx'
 import { GamingMode } from '../modes/gaming/GamingMode.jsx'
 import { ImmersiveMode } from '../modes/immersive/ImmersiveMode.jsx'
+import { TestingMode } from '../modes/testing/TestingMode.jsx'
 import { ComingSoonMode } from '../modes/future/ComingSoonMode.jsx'
 
 export const modes = [
@@ -45,6 +46,16 @@ export const modes = [
     status: 'beta',
     icon: '*',
     component: ImmersiveMode,
+    showInSwitcher: true,
+  },
+  {
+    id: 'testing',
+    name: 'Testing',
+    description: 'Clean minimal portfolio layout experiment.',
+    path: '/testing',
+    status: 'beta',
+    icon: 'T',
+    component: TestingMode,
     showInSwitcher: true,
   },
   {
