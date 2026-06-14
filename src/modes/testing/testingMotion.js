@@ -133,6 +133,15 @@ export const softHover = {
   scale: 1.01,
 }
 
+export const card3DHover = {
+  y: -6,
+  scale: 1.012,
+  transition: {
+    duration: 0.22,
+    ease: easing,
+  },
+}
+
 export const buttonHover = {
   y: -2,
   scale: 1.015,

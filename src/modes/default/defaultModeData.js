@@ -49,39 +49,39 @@ export const defaultModeData = {
   ],
   projects: [
     {
-      title: 'Actuarial Reporting Automation',
+      title: 'Asset Valuation Model / Mark-to-Model Engine',
       description:
-        'Automated recurring actuarial reports including reserving, premiums, movement analysis, and business summaries using Python, SQL, and Excel.',
-      tags: ['Python', 'SQL', 'Excel', 'Automation'],
+        'Built a Python valuation workflow using editable Excel inputs, validation checks, cashflow projection, discount factors, stress scenarios, and automated PV outputs.',
+      tags: ['Python', 'Pandas', 'Valuation', 'Stress Scenarios'],
       icon: '📄',
     },
     {
-      title: 'Excel to Python Model Conversion',
+      title: 'Actuarial Reporting Automation',
       description:
-        'Converted complex Excel actuarial models into scalable Python scripts to improve performance, auditability, and maintainability.',
-      tags: ['Python', 'Pandas', 'NumPy', 'Excel'],
+        'Automated daily business reporting using Python, SQL, Excel outputs, Windows Task Scheduler, and email distribution to senior management.',
+      tags: ['Python', 'SQL', 'Excel', 'Task Scheduler'],
       icon: '💻',
     },
     {
-      title: 'Power BI Dashboard',
+      title: 'Power BI Business Dashboards',
       description:
-        'Designed interactive Power BI dashboards to track KPIs, trends, and key metrics for management reporting and decision-making.',
-      tags: ['Power BI', 'DAX', 'SQL', 'Data Modeling'],
+        'Developed dashboards connected to refreshed business data for KPI monitoring, management reporting, actuarial analysis, and decision support.',
+      tags: ['Power BI', 'SQL', 'KPIs', 'Reporting'],
       icon: '📈',
     },
   ],
   focusAreas: [
     {
-      title: 'Actuarial Automation',
-      text: 'Automating recurring actuarial and business reporting workflows.',
+      title: 'Financial & Actuarial Modelling',
+      text: 'Building valuation, cashflow, reserving, and stress scenario models using Python and Excel.',
     },
     {
-      title: 'Model Conversion',
-      text: 'Moving Excel-based actuarial logic into Python-based workflows.',
+      title: 'Automation & Model Controls',
+      text: 'Creating repeatable workflows with validation checks, structured inputs, run summaries, and controlled outputs.',
     },
     {
-      title: 'Data & Dashboarding',
-      text: 'Building SQL and Power BI reporting outputs for decision support.',
+      title: 'Data Analytics & Dashboards',
+      text: 'Building SQL and Power BI reporting outputs for KPI monitoring and management decision support.',
     },
   ],
 }

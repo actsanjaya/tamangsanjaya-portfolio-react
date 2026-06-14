@@ -54,59 +54,53 @@ export const testingModeData = {
   ],
   projectSection: {
     eyebrow: 'Projects',
-    title: 'Practical actuarial and technical builds.',
+    title: 'Actuarial technology projects with practical business use.',
     subtitle:
-      'A tighter project set for the testing layout, focused on valuation, reporting, modelling, dashboards, and AI-assisted document work.',
+      'A focused project set covering valuation modelling, reporting automation, dashboards, and technical actuarial workflow design.',
   },
   projects: [
     {
-      title: 'Asset Valuation',
+      title: 'Asset Valuation Model / Mark-to-Model Engine',
       description:
-        'A practical valuation workflow for asset-side modeling, rate inputs, assumptions, and structured calculation outputs.',
-      tags: ['Excel', 'Python', 'Valuation', 'Assumptions'],
-    },
-    {
-      title: 'Liability Valuation',
-      description:
-        'A liability-side actuarial valuation concept focused on assumptions, model points, projected cashflows, reserves, and reporting summaries.',
-      tags: ['Python', 'SQL', 'Cashflows', 'Reserves'],
+        'Python valuation engine using editable Excel inputs, validation checks, cashflow projection, discount factors, stress scenarios, and automated PV outputs.',
+      tags: ['Python', 'Pandas', 'Valuation', 'Stress Scenarios'],
     },
     {
       title: 'Daily Reporting Automation',
       description:
-        'Recurring business reporting automation using Python, SQL, Excel outputs, styled emails, and dashboard-ready datasets.',
-      tags: ['Python', 'SQL', 'Excel', 'Email Automation'],
+        'Python and Windows Task Scheduler workflow for recurring daily business reporting, Excel outputs, and automated email distribution to senior management.',
+      tags: ['Python', 'SQL', 'Task Scheduler', 'Email Automation'],
     },
     {
-      title: 'Bordereaux Formulation',
+      title: 'Power BI Business Dashboards',
       description:
-        'A structured bordereaux preparation and transformation workflow for reinsurance and reporting data.',
-      tags: ['Excel', 'Reinsurance', 'Data Transformation'],
+        'Dashboard views connected to refreshed business data, supporting KPI monitoring, management reporting, actuarial review, and decision-ready analysis.',
+      tags: ['Power BI', 'SQL', 'KPIs', 'Reporting'],
     },
     {
-      title: 'Excel Modelling',
+      title: 'Excel / VBA / Power Query Models',
       description:
-        'Excel-based actuarial and financial modelling templates using structured inputs, formulas, validation, and controlled outputs.',
-      tags: ['Excel', 'VBA', 'Advanced Formulas', 'Validation'],
+        'Reusable Excel, VBA, and Power Query models for surrender calculations, IRR analysis, data visualization, and recurring actuarial analysis.',
+      tags: ['Excel', 'VBA', 'Power Query', 'Model Checks'],
     },
     {
-      title: 'Power BI Dashboard',
+      title: 'Reinsurance Bordereaux and Data Workflows',
       description:
-        'Interactive dashboard experiences for KPI tracking, performance analytics, and decision-ready reporting.',
-      tags: ['Power BI', 'DAX', 'KPIs', 'Reporting'],
+        'Structured reinsurance bordereaux preparation, claim referral reporting, policy-level data review, and departmental reconciliation support.',
+      tags: ['Reinsurance', 'Excel', 'Data Review', 'Reporting'],
     },
     {
-      title: 'RAG Assistant',
+      title: 'Pricing and Reserving Model',
       description:
-        'A document intelligence assistant concept for parsing files, retrieving relevant context, and answering questions from actuarial/product documents.',
-      tags: ['Python', 'RAG', 'Embeddings', 'Vector Search'],
+        'Excel-based life insurance pricing and reserving model currently being developed, including premium calculation, reserve projection, and sensitivity analysis.',
+      tags: ['Excel', 'Pricing', 'Reserving', 'Actuarial Modelling'],
     },
   ],
   experienceSection: {
     eyebrow: 'Experience',
-    title: 'Insurance and actuarial workflow exposure.',
+    title: 'Actuarial, reporting, and automation experience.',
     subtitle:
-      'A concise timeline covering actuarial analysis, reinsurance support, operations, reporting, and automation.',
+      'A concise timeline covering valuation support, RBC-related work, reinsurance, SQL analysis, dashboards, and repeatable Python workflows.',
   },
   experience: [
     {
@@ -115,13 +109,13 @@ export const testingModeData = {
       period: 'Dec 2025 - Present · 6 mos',
       location: null,
       focus: [
-        'Actuarial Modelling',
-        'Python',
-        'Actuarial reporting',
         'Valuation support',
-        'Automation',
-        'Dashboards',
-        'Data analysis',
+        'RBC-related analysis',
+        'Mark-to-model workflow',
+        'Python',
+        'SQL reconciliation',
+        'Power BI dashboards',
+        'Reporting automation',
       ],
     },
     {
@@ -131,10 +125,11 @@ export const testingModeData = {
       location: 'Kathmandu, Bagmati, Nepal · On-site',
       focus: [
         'Reinsurance',
-        'R',
-        'Actuarial analysis',
-        'Insurance data',
-        'Reporting support',
+        'Bordereaux preparation',
+        'Claim referral reporting',
+        'Policy-level data review',
+        'Departmental reporting',
+        'Operational analysis',
       ],
     },
     {
@@ -163,26 +158,33 @@ export const testingModeData = {
     {
       title: 'CM2 - Financial Engineering and Loss Reserving',
     },
+    {
+      title: 'CB2 - Business Economics - Result Pending',
+    },
   ],
   technicalFocus: [
     {
-      title: 'Actuarial Automation',
-      text: 'Automating recurring actuarial and business reporting workflows.',
+      title: 'Financial & Actuarial Modelling',
+      text: 'Building valuation, cashflow, reserving, stress scenario, and assumption-driven models using Python and Excel.',
     },
     {
-      title: 'Model Conversion',
-      text: 'Moving Excel-based actuarial logic into Python-based workflows.',
+      title: 'Data Analytics & Dashboards',
+      text: 'Using SQL, Power BI, Excel, and refreshed business data to create KPI views and decision-ready reporting outputs.',
     },
     {
-      title: 'Data & Dashboarding',
-      text: 'Building SQL and Power BI reporting outputs for decision support.',
+      title: 'Automation & Model Controls',
+      text: 'Creating repeatable workflows with validation checks, structured inputs, clear run summaries, and controlled outputs.',
+    },
+    {
+      title: 'Stakeholder Communication',
+      text: 'Preparing clear reports, model outputs, and explanations for senior management, finance teams, and non-technical users.',
     },
   ],
   technicalFocusSection: {
     eyebrow: 'Technical Focus',
-    title: 'Strengths that connect actuarial work and systems.',
+    title: 'Strengths that connect actuarial work and technology.',
     subtitle:
-      'Practical focus areas that connect actuarial thinking, technical delivery, and business reporting.',
+      'Practical focus areas that connect actuarial judgement, technical delivery, model controls, and stakeholder-ready reporting.',
   },
   contactSection: {
     eyebrow: 'Contact',

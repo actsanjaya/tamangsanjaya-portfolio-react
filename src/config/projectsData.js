@@ -20,32 +20,32 @@ export const projectFilters = [
 export const portfolioProjects = [
   {
     id: 'mark-to-model-excel-tool',
-    title: 'Mark-to-Model Excel Tool',
-    shortTitle: 'MTM Excel',
-    subtitle: 'Structured Excel template for mark-to-model valuation workflows.',
+    title: 'Asset Valuation Model / Mark-to-Model Engine',
+    shortTitle: 'MTM Engine',
+    subtitle: 'Python valuation engine with editable Excel inputs and automated PV outputs.',
     category: 'Excel Tool',
     filterGroup: 'excel-tool',
-    status: 'planned',
+    status: 'completed',
     featured: true,
     summary:
-      'A future Excel-based valuation template where users can enter required asset, assumption, and model data in a controlled structure.',
+      'A Python-based valuation model that reads editable Excel inputs, validates asset data, projects cashflows, applies discount factors and stress scenarios, and generates automated PV outputs.',
     problem:
-      'Mark-to-model workflows can become hard to review when assumptions, inputs, and outputs are scattered across manual spreadsheets.',
+      'Mark-to-model workflows can become hard to review when assumptions, asset data, cashflows, discount factors, and outputs are scattered across manual spreadsheet workings.',
     solution:
-      'Design a governed Excel template using formulas, validation, and optional VBA to standardize inputs and produce clear valuation outputs.',
+      'Built a controlled Python workflow using structured Excel inputs, dataclass-based asset models, validation checks, cashflow projection, discount factor lookup, stress scenarios, and Excel output generation.',
     impact:
-      'Planned to improve repeatability, documentation, and reviewability for portfolio-style valuation examples.',
-    tools: ['Excel', 'Advanced Formulas', 'VBA', 'Model Validation'],
-    tags: ['Mark-to-Model', 'Excel Template', 'Valuation', 'Controls'],
+      'Improves repeatability, auditability, data checking, and usability for valuation outputs that need to be reviewed by actuarial, finance, and non-technical stakeholders.',
+    tools: ['Python', 'Pandas', 'Excel', 'OpenPyXL', 'Model Validation'],
+    tags: ['Mark-to-Model', 'Valuation', 'Cashflows', 'Stress Scenarios'],
     deliverables: [
-      'Structured input workbook',
-      'Sample valuation output tabs',
-      'Documentation and assumptions guide',
+      'Editable Excel input workflow',
+      'Projected cashflow and PV output files',
+      'Validation and run-summary reporting',
     ],
     futureRoadmap: [
-      'Create sample synthetic input data',
-      'Add model checks and validation rules',
-      'Publish downloadable template once reviewed',
+      'Add a Streamlit interface for non-technical users',
+      'Package the workflow into a one-folder executable release',
+      'Publish sanitized screenshots and project case study',
     ],
     links: {
       liveApp: null,
@@ -61,32 +61,32 @@ export const portfolioProjects = [
   },
   {
     id: 'mark-to-model-python-web-app',
-    title: 'Mark-to-Model Python Web App',
-    shortTitle: 'MTM Web App',
-    subtitle: 'Future browser-based mark-to-model workflow and results interface.',
+    title: 'Mark-to-Model User Interface',
+    shortTitle: 'MTM UI',
+    subtitle: 'Streamlit direction for a non-technical valuation model runner.',
     category: 'Web App',
     filterGroup: 'web-app',
-    status: 'planned',
+    status: 'in-progress',
     featured: true,
     summary:
-      'A planned standalone app for entering or uploading valuation inputs, running model logic, and reviewing structured outputs.',
+      'A user-friendly interface direction for running the mark-to-model engine through folder selection, input checks, editable parameters, progress messages, and downloadable outputs.',
     problem:
-      'Spreadsheet-only valuation tools can be difficult to scale, audit, and present to non-technical stakeholders.',
+      'Command-line valuation tools are powerful but can be difficult for non-technical users to run, review, and trust without a guided interface.',
     solution:
-      'Build a separate Python-powered web app later, with this portfolio linking to the deployed app and case study.',
+      'Use Streamlit and packaging concepts to turn the Python valuation engine into an app-like workflow with clear file checks, model settings, validation status, and output download steps.',
     impact:
-      'Intended to demonstrate the path from Excel models to maintainable, app-like actuarial tools.',
-    tools: ['Python', 'Pandas', 'React', 'Validation', 'Cloud Deployment'],
-    tags: ['Mark-to-Model', 'Web App', 'Python', 'Model Outputs'],
+      'Demonstrates the path from actuarial calculation code to a stakeholder-friendly financial tool that can be used without opening the Python source.',
+    tools: ['Python', 'Streamlit', 'Pandas', 'Validation', 'PyInstaller'],
+    tags: ['Mark-to-Model', 'Streamlit', 'Python', 'Model Outputs'],
     deliverables: [
-      'Standalone app repository',
-      'Input and assumption workflow',
-      'Result summaries and exportable views',
+      'Folder-based model runner concept',
+      'Model setting preview and validation status',
+      'Downloadable valuation outputs',
     ],
     futureRoadmap: [
-      'Define input schema',
-      'Build model calculation service in a separate repo',
-      'Link live app after deployment',
+      'Complete Streamlit controls for parameter editing',
+      'Add output download and run-history views',
+      'Rebuild packaged executable after interface completion',
     ],
     links: {
       liveApp: null,
@@ -151,15 +151,15 @@ export const portfolioProjects = [
     status: 'in-progress',
     featured: true,
     summary:
-      'A practical automation project focused on recurring reports, data extraction, Excel outputs, styled emails, and dashboard-ready summaries.',
+      'A practical automation project focused on daily business reporting, SQL/data extraction, Excel outputs, scheduled execution, email distribution, and dashboard-ready summaries.',
     problem:
       'Recurring reporting can consume time when SQL extracts, Excel transformations, and distribution steps are repeated manually.',
     solution:
-      'Use Python, SQL, Excel automation, and reporting templates to create repeatable workflows with clearer review points.',
+      'Use Python, SQL, Excel automation, Windows Task Scheduler, and reporting templates to create repeatable workflows with clearer review points and automated email delivery.',
     impact:
-      'Targets faster reporting cycles, fewer manual touchpoints, and more consistent business outputs.',
-    tools: ['Python', 'SQL', 'Excel', 'Power BI', 'Email Automation'],
-    tags: ['Automation', 'Reporting', 'SQL Pipeline', 'Excel Outputs'],
+      'Supports faster daily reporting, fewer manual touchpoints, and more consistent business outputs for senior management and operational review.',
+    tools: ['Python', 'SQL', 'Excel', 'Power BI', 'Task Scheduler'],
+    tags: ['Automation', 'Reporting', 'Email Distribution', 'Excel Outputs'],
     deliverables: [
       'Reusable reporting scripts',
       'Styled email/report output patterns',

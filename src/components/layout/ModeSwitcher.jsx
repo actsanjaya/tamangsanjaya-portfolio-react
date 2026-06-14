@@ -1,6 +1,6 @@
 import { Badge } from '../ui/Badge.jsx'
 
-export function ModeSwitcher({ activeModeId, modes, onNavigate }) {
+export function ModeSwitcher({ activeModeId, modes, onNavigate, renderModeIcon }) {
   return (
     <nav className="modeSwitcher" aria-label="Portfolio mode switcher">
       {modes.map((mode) => (
@@ -15,7 +15,7 @@ export function ModeSwitcher({ activeModeId, modes, onNavigate }) {
           }}
         >
           <span className="modeSwitchIcon" aria-hidden="true">
-            {mode.icon}
+            {renderModeIcon ? renderModeIcon(mode) : mode.icon}
           </span>
           <span>
             <strong>{mode.name}</strong>
