@@ -58,9 +58,11 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--color-line);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(239, 247, 255, 0.7));
+  backdrop-filter: blur(22px) saturate(1.18);
+  -webkit-backdrop-filter: blur(22px) saturate(1.18);
+  border-bottom: 1px solid rgba(169, 199, 247, 0.45);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
 }
 
 .brand {
@@ -1278,7 +1280,6 @@ a {
     margin-left: auto;
   }
 }
-
 @media (max-width: 980px) {
   .hero,
   .overviewGrid,
@@ -1321,28 +1322,90 @@ a {
 }
 
 @media (max-width: 760px) {
+  .navbar {
+    top: 10px;
+    width: min(100% - 20px, 720px);
+    margin: 0 auto;
+    padding: 9px 10px;
+    flex-wrap: nowrap;
+    gap: 10px;
+    border: 1px solid rgba(169, 199, 247, 0.55);
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(237, 244, 255, 0.58));
+    box-shadow: 0 16px 42px rgba(15, 23, 42, 0.14);
+  }
+
+  .brand {
+    gap: 8px;
+    min-width: max-content;
+    font-size: 0.96rem;
+  }
+
+  .brandIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+  }
+
+  .navLinks,
+  .navReturnLink {
+    display: none;
+  }
+
   .navbarActions {
-    width: 100%;
-    margin-left: 0;
-    align-items: stretch;
-    flex-direction: column;
+    min-width: 0;
+    margin-left: auto;
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
   }
 
   .modeSwitcher {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    width: auto;
+    max-width: 58vw;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: 2px;
+    border: 1px solid rgba(169, 199, 247, 0.42);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.42);
+    scrollbar-width: none;
+  }
+
+  .modeSwitcher::-webkit-scrollbar {
+    display: none;
   }
 
   .modeSwitchLink {
+    min-height: 36px;
+    flex: 0 0 auto;
     justify-content: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.66);
+    white-space: nowrap;
+  }
+
+  .modeSwitchIcon {
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+  }
+
+  .modeSwitchLink strong {
+    font-size: 0.78rem;
   }
 
   .modeSwitchLink .badge {
     display: none;
   }
 }
-
 @media (max-width: 680px) {
   .hero {
     padding-top: 54px;
@@ -1384,11 +1447,11 @@ a {
   }
 
   .modeSwitcher {
-    grid-template-columns: 1fr;
+    max-width: 48vw;
   }
 
   .modeSwitchLink {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .zoneCard {

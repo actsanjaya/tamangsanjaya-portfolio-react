@@ -2,7 +2,6 @@ import { DefaultMode } from '../modes/default/DefaultMode.jsx'
 import { GestureMode } from '../modes/gesture/GestureMode.jsx'
 import { GamingMode } from '../modes/gaming/GamingMode.jsx'
 import { ImmersiveMode } from '../modes/immersive/ImmersiveMode.jsx'
-import { TestingMode } from '../modes/testing/TestingMode.jsx'
 import { ComingSoonMode } from '../modes/future/ComingSoonMode.jsx'
 
 export const modes = [
@@ -13,7 +12,7 @@ export const modes = [
     path: '/',
     aliases: ['/default'],
     status: 'stable',
-    icon: '↗',
+    icon: '\u2197',
     component: DefaultMode,
     showInSwitcher: true,
   },
@@ -23,7 +22,7 @@ export const modes = [
     description: 'Optional webcam-based navigation experiment.',
     path: '/gesture',
     status: 'beta',
-    icon: '⌁',
+    icon: '\u2301',
     component: GestureMode,
     showInSwitcher: true,
   },
@@ -33,7 +32,7 @@ export const modes = [
     description: 'Explore portfolio zones through a lightweight game-like map.',
     path: '/gaming',
     status: 'beta',
-    icon: '◆',
+    icon: '\u25c6',
     component: GamingMode,
     showInSwitcher: true,
   },
@@ -46,16 +45,6 @@ export const modes = [
     status: 'beta',
     icon: '*',
     component: ImmersiveMode,
-    showInSwitcher: true,
-  },
-  {
-    id: 'testing',
-    name: 'Testing',
-    description: 'Clean minimal portfolio layout experiment.',
-    path: '/testing',
-    status: 'beta',
-    icon: 'T',
-    component: TestingMode,
     showInSwitcher: true,
   },
   {
