@@ -165,7 +165,7 @@ export const portfolioData = {
       title: 'CM2 - Financial Engineering and Loss Reserving',
     },
     {
-      title: 'CB2 - Business Economics - Result Pending',
+      title: 'CB2 - Business Economics',
     },
   ],
   technicalFocus: [
