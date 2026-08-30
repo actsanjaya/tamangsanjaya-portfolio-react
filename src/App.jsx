@@ -1,72 +1,90 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Suspense, useCallback, useEffect, useState } from 'react'
 import { Navbar } from './components/layout/Navbar.jsx'
 import { Footer } from './components/layout/Footer.jsx'
-import { modes } from './config/modes.js'
+import { pages } from './config/pages.js'
 import { siteData } from './config/siteData.js'
+import { useTheme } from './hooks/useTheme.js'
+import { SceneBackdrop } from './scene/SceneBackdrop.jsx'
 
-const normalizePath = (path) => {
-  const cleanPath = path.replace(/\/+$/, '')
-  return cleanPath || '/'
-}
+const normalizePath = (path) => path.replace(/\/+$/, '') || '/'
 
-const findModeByPath = (path) => {
-  const normalizedPath = normalizePath(path)
+const fallbackPage = pages.find((page) => page.isFallback) ?? pages[0]
+
+const findPageByPath = (path) => {
+  const normalized = normalizePath(path)
 
   return (
-    modes.find(
-      (mode) =>
-        normalizePath(mode.path) === normalizedPath ||
-        mode.aliases?.some((alias) => normalizePath(alias) === normalizedPath),
-    ) ?? modes.find((mode) => mode.id === 'default')
+    pages.find(
+      (page) =>
+        normalizePath(page.path) === normalized ||
+        page.aliases?.some((alias) => normalizePath(alias) === normalized),
+    ) ?? fallbackPage
   )
 }
 
 function App() {
-  const [activeMode, setActiveMode] = useState(() =>
-    findModeByPath(window.location.pathname),
+  const [activePage, setActivePage] = useState(() =>
+    findPageByPath(window.location.pathname),
   )
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
-    const handlePopState = () => {
-      setActiveMode(findModeByPath(window.location.pathname))
-    }
+    const handlePopState = () =>
+      setActivePage(findPageByPath(window.location.pathname))
 
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  const navigate = (to) => {
-    const targetUrl = new URL(to, window.location.origin)
+  useEffect(() => {
+    document.title = activePage.title
+  }, [activePage])
 
-    window.history.pushState({}, '', `${targetUrl.pathname}${targetUrl.hash}`)
-    setActiveMode(findModeByPath(targetUrl.pathname))
+  const navigate = useCallback((to) => {
+    const target = new URL(to, window.location.origin)
+    const nextPage = findPageByPath(target.pathname)
+    const samePage = target.pathname === window.location.pathname
 
-    if (targetUrl.hash) {
+    window.history.pushState({}, '', `${target.pathname}${target.hash}`)
+    setActivePage(nextPage)
+
+    if (target.hash) {
+      // Give a freshly mounted page a frame to render before scrolling to it.
       window.requestAnimationFrame(() => {
-        document.querySelector(targetUrl.hash)?.scrollIntoView()
+        document.querySelector(target.hash)?.scrollIntoView({
+          behavior: samePage ? 'smooth' : 'auto',
+          block: 'start',
+        })
       })
       return
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+    window.scrollTo({ top: 0, behavior: samePage ? 'smooth' : 'auto' })
+  }, [])
 
-  const ModeComponent = activeMode.component
-  const stableModes = useMemo(
-    () => modes.filter((mode) => mode.showInSwitcher),
-    [],
-  )
+  const PageComponent = activePage.component
 
   return (
     <div className="siteShell">
+      <SceneBackdrop theme={theme} />
+
       <Navbar
-        activeMode={activeMode}
-        modes={stableModes}
+        activePageId={activePage.id}
         onNavigate={navigate}
+        onToggleTheme={toggleTheme}
         siteData={siteData}
+        theme={theme}
       />
 
-      <ModeComponent onNavigate={navigate} siteData={siteData} />
+      <Suspense
+        fallback={
+          <div className="routeFallback" role="status">
+            Loading…
+          </div>
+        }
+      >
+        <PageComponent onNavigate={navigate} siteData={siteData} />
+      </Suspense>
 
       <Footer onNavigate={navigate} siteData={siteData} />
     </div>

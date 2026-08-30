@@ -1,0 +1,2239 @@
+.testingAboutSkillsFlow {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(48px, 6vw, 76px) 0 clamp(22px, 4vw, 42px);
+}
+
+.testingDefaultReplica {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.testingDefaultReplica .heroContent h1 {
+  font-size: clamp(3.2rem, 6vw, 6rem);
+  font-weight: 850;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.testingDefaultReplica .heroRole {
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-weight: 750;
+}
+
+.testingDefaultReplica .heroText {
+  max-width: 720px;
+  font-size: clamp(1rem, 1.45vw, 1.15rem);
+  font-weight: 450;
+  line-height: 1.7;
+}
+
+.testingAccentText {
+  color: var(--color-blue-strong);
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-blue-strong), var(--color-violet));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .testingAccentText,
+  .testingSectionEyebrow {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+.testingAboutSection {
+  position: relative;
+}
+
+.testingAboutHeader {
+  position: relative;
+  z-index: 1;
+  margin-bottom: clamp(22px, 3vw, 34px);
+}
+
+.testingAboutCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  padding: clamp(28px, 5vw, 48px);
+  overflow: hidden;
+  border: 1px solid rgb(var(--rgb-line) / 0.22);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 8% 0%, rgb(var(--rgb-blue-strong) / 0.1), transparent 34%),
+    linear-gradient(135deg, rgb(var(--rgb-surface) / 0.96), rgb(var(--rgb-tint-softer) / 0.86));
+  box-shadow: 0 24px 70px rgb(var(--rgb-shadow) / 0.08);
+}
+
+.testingAboutCard::after {
+  content: "";
+  position: absolute;
+  inset: auto 28px 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(var(--rgb-blue-strong) / 0.28), transparent);
+}
+
+.testingAboutCopy,
+.testingAboutCard,
+.testingAboutHighlights,
+.testingSkillsHeader,
+.testingGroupedSkillsGrid,
+.testingProjectsHeader,
+.testingProjectsGrid,
+.testingExperienceHeader,
+.testingExperienceList,
+.testingCertificationsHeader,
+.testingCertificationGrid,
+.testingTechnicalFocusHeader,
+.testingFocusGrid,
+.testingContactHeader,
+.testingContactGrid {
+  position: relative;
+  z-index: 1;
+}
+
+.testingSectionEyebrow {
+  width: fit-content;
+  margin: 0 0 clamp(20px, 2.4vw, 30px);
+  color: var(--color-blue-strong);
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-blue-strong), var(--color-violet));
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-size: clamp(1.38rem, 1.68vw, 1.85rem);
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  -webkit-text-fill-color: transparent;
+}
+
+.testingSectionEyebrow::after {
+  content: "";
+  display: block;
+  width: 54px;
+  height: 3px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-blue-strong), var(--color-violet));
+}
+
+.testingAboutCopy h2,
+.testingSkillsHeader h2,
+.testingProjectsHeader h2,
+.testingExperienceHeader h2,
+.testingTechnicalFocusHeader h2,
+.testingContactHeader h2 {
+  margin: 0;
+  color: var(--color-heading);
+  font-weight: 850;
+  letter-spacing: -0.04em;
+}
+
+.testingAboutCopy h2 {
+  max-width: 740px;
+  font-size: clamp(1.82rem, 3.1vw, 2.95rem);
+  line-height: 1.04;
+}
+
+.testingAboutCopy p:last-child {
+  max-width: 790px;
+  margin: 22px 0 0;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  font-weight: 450;
+  line-height: 1.7;
+}
+
+.testingAboutHighlights {
+  display: grid;
+  gap: 12px;
+}
+
+.testingAboutHighlights span {
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 13px 16px;
+  border: 1px solid rgb(var(--rgb-blue-strong) / 0.16);
+  border-radius: 999px;
+  background: rgb(var(--rgb-surface) / 0.76);
+  color: var(--color-heading);
+  font-size: 0.94rem;
+  font-weight: 700;
+  box-shadow: 0 10px 26px rgb(var(--rgb-shadow) / 0.05);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.testingAboutHighlights span::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--color-blue);
+  box-shadow: 0 0 0 5px rgb(var(--rgb-blue-strong) / 0.1);
+}
+
+.testingAboutHighlights span:hover,
+.testingGroupedSkillCard:hover,
+.testingProjectCard:hover,
+.testingExperienceCard:hover,
+.testingCertificationCard:hover,
+.testingFocusCard:hover,
+.testingContactRow:hover,
+.testingContactActions:hover {
+  transform: translateY(-4px);
+  border-color: rgb(var(--rgb-blue-strong) / 0.34);
+  box-shadow: 0 24px 52px rgb(var(--rgb-shadow) / 0.12);
+}
+
+.testingAboutHighlights span:hover {
+  background: var(--color-surface);
+}
+
+.testingSkillsSection {
+  padding-top: clamp(42px, 5vw, 64px);
+}
+
+.testingSkillsHeader {
+  max-width: 860px;
+  margin-bottom: clamp(28px, 4vw, 42px);
+}
+
+.testingSkillsHeader h2 {
+  max-width: 760px;
+  font-size: clamp(2.2rem, 4.1vw, 3.55rem);
+  line-height: 1.04;
+}
+
+.testingSkillsHeader > p:last-child:not(.testingSectionEyebrow) {
+  margin: 22px 0 0;
+  color: var(--color-subtle);
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  font-weight: 450;
+  line-height: 1.65;
+}
+
+.testingGroupedSkillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 28px);
+}
+
+.testingGroupedSkillCard {
+  min-width: 0;
+  padding: clamp(24px, 3vw, 32px);
+  border: 1px solid rgb(var(--rgb-line) / 0.28);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.98), rgb(var(--rgb-surface) / 0.9)),
+    radial-gradient(circle at 18% 0%, rgb(var(--rgb-blue-strong) / 0.08), transparent 28%);
+  box-shadow: 0 18px 44px rgb(var(--rgb-shadow) / 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.testingGroupedSkillCard > span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--color-blue);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.testingGroupedSkillCard h3 {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: clamp(1.15rem, 1.65vw, 1.35rem);
+  font-weight: 760;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.testingGroupedSkillCard ul {
+  margin: 26px 0 0;
+  padding: 0;
+  border-top: 1px solid rgb(var(--rgb-line) / 0.28);
+  list-style: none;
+}
+
+.testingGroupedSkillCard li {
+  padding: 15px 0;
+  border-bottom: 1px solid rgb(var(--rgb-line) / 0.2);
+  color: var(--color-muted);
+  font-size: clamp(0.94rem, 1.1vw, 1rem);
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.testingGroupedSkillCard li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.testingProjectsSection {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(42px, 5vw, 70px) 0 clamp(24px, 4vw, 44px);
+}
+
+.testingProjectsHeader {
+  max-width: 900px;
+  margin-bottom: clamp(28px, 4vw, 42px);
+}
+
+.testingProjectsHeader h2 {
+  max-width: 800px;
+  font-size: clamp(2.15rem, 4vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.testingProjectsHeader > p:last-child:not(.testingSectionEyebrow) {
+  max-width: 900px;
+  margin: 20px 0 0;
+  color: var(--color-subtle);
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  font-weight: 450;
+  line-height: 1.66;
+}
+
+.testingProjectsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.2vw, 28px);
+  align-items: stretch;
+}
+
+.testingProjectCard {
+  min-width: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 2.6vw, 30px);
+  border: 1px solid rgb(var(--rgb-line) / 0.28);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.98), rgb(var(--rgb-surface) / 0.92)),
+    radial-gradient(circle at top right, rgb(var(--rgb-blue-strong) / 0.07), transparent 34%);
+  box-shadow: 0 18px 44px rgb(var(--rgb-shadow) / 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.testingProjectCard h3 {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: clamp(1.1rem, 1.45vw, 1.28rem);
+  font-weight: 760;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.testingProjectCard > p {
+  margin: 18px 0 0;
+  color: var(--color-subtle);
+  font-size: 0.96rem;
+  font-weight: 450;
+  line-height: 1.66;
+}
+
+.testingProjectTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 24px 0 0;
+}
+
+.testingProjectTags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 11px;
+  border: 1px solid rgb(var(--rgb-line) / 0.28);
+  border-radius: 999px;
+  background: rgb(var(--rgb-tint-softer) / 0.82);
+  color: var(--color-ink);
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.15;
+}
+
+.testingExperienceSection,
+.testingCertificationsSection {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(34px, 4.8vw, 58px) 0 clamp(20px, 3.5vw, 40px);
+}
+
+.testingExperienceHeader,
+.testingCertificationsHeader {
+  max-width: 820px;
+  margin-bottom: clamp(24px, 3vw, 34px);
+}
+
+.testingExperienceHeader h2 {
+  max-width: 820px;
+  font-size: clamp(2.05rem, 3.7vw, 3.3rem);
+  line-height: 1.06;
+}
+
+.testingExperienceHeader > p:last-child:not(.testingSectionEyebrow) {
+  max-width: 780px;
+  margin: 16px 0 0;
+  color: var(--color-subtle);
+  font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+  font-weight: 450;
+  line-height: 1.66;
+}
+
+.testingExperienceList {
+  display: grid;
+  max-width: 980px;
+  gap: 18px;
+}
+
+.testingExperienceCard {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(22px, 4vw, 54px);
+  align-items: start;
+  padding: clamp(20px, 2.4vw, 26px);
+  border: 1px solid rgb(var(--rgb-line) / 0.28);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.98), rgb(var(--rgb-surface) / 0.92)),
+    radial-gradient(circle at top left, rgb(var(--rgb-blue-strong) / 0.05), transparent 34%);
+  box-shadow: 0 16px 40px rgb(var(--rgb-shadow) / 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.testingExperienceMeta > span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.testingExperienceMeta h3 {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: clamp(1.08rem, 1.35vw, 1.24rem);
+  font-weight: 760;
+  letter-spacing: -0.02em;
+  line-height: 1.22;
+}
+
+.testingExperienceMeta p,
+.testingExperienceMeta small {
+  display: block;
+  margin: 5px 0 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.testingExperienceMeta small {
+  color: var(--color-subtle);
+  font-size: 0.82rem;
+}
+
+.testingExperienceTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: start;
+}
+
+.testingExperienceTags span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 30px;
+  padding: 6px 10px;
+  border: 1px solid rgb(var(--rgb-line) / 0.28);
+  border-radius: 999px;
+  background: rgb(var(--rgb-tint-softer) / 0.86);
+  color: var(--color-ink);
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.12;
+}
+
+.testingCertificationGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.2vw, 26px);
+  max-width: 980px;
+}
+
+.testingCertificationCard {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  min-height: 120px;
+  padding: clamp(22px, 2.6vw, 30px);
+  border: 1px solid rgb(var(--rgb-line) / 0.28);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.98), rgb(var(--rgb-surface) / 0.92)),
+    radial-gradient(circle at top left, rgb(var(--rgb-blue-strong) / 0.06), transparent 34%);
+  box-shadow: 0 16px 40px rgb(var(--rgb-shadow) / 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.testingCertificationCard h3 {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: clamp(1.02rem, 1.25vw, 1.14rem);
+  font-weight: 760;
+  letter-spacing: -0.015em;
+  line-height: 1.24;
+}
+
+.testingTechnicalFocus,
+.testingContact {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(36px, 5vw, 60px) 0 clamp(22px, 4vw, 44px);
+}
+
+.testingTechnicalFocusHeader,
+.testingContactHeader {
+  max-width: 860px;
+  margin-bottom: clamp(24px, 3.2vw, 36px);
+}
+
+.testingTechnicalFocusHeader h2,
+.testingContactHeader h2 {
+  max-width: 900px;
+  font-size: clamp(2.05rem, 3.7vw, 3.3rem);
+  line-height: 1.06;
+}
+
+.testingTechnicalFocusHeader > p:last-child:not(.testingSectionEyebrow),
+.testingContactHeader > p:last-child:not(.testingSectionEyebrow) {
+  max-width: 820px;
+  margin: 16px 0 0;
+  color: var(--color-subtle);
+  font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+  font-weight: 450;
+  line-height: 1.66;
+}
+
+.testingFocusGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.2vw, 26px);
+}
+
+.testingFocusCard {
+  min-width: 0;
+  padding: clamp(22px, 2.5vw, 30px);
+  border: 1px solid rgb(var(--rgb-line) / 0.28);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.98), rgb(var(--rgb-surface) / 0.92)),
+    radial-gradient(circle at top right, rgb(var(--rgb-blue-strong) / 0.07), transparent 34%);
+  box-shadow: 0 16px 40px rgb(var(--rgb-shadow) / 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.testingFocusCard > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: rgb(var(--rgb-blue-strong) / 0.08);
+  color: var(--color-blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.testingFocusCard h3 {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: clamp(1.08rem, 1.35vw, 1.24rem);
+  font-weight: 760;
+  letter-spacing: -0.02em;
+  line-height: 1.22;
+}
+
+.testingFocusCard p {
+  margin: 14px 0 0;
+  color: var(--color-subtle);
+  font-size: 0.96rem;
+  font-weight: 450;
+  line-height: 1.66;
+}
+
+.testingContactGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+  gap: clamp(20px, 3vw, 34px);
+  align-items: start;
+}
+
+.testingContactDetails,
+.testingContactActions {
+  min-width: 0;
+  border: 1px solid rgb(var(--rgb-line) / 0.28);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.98), rgb(var(--rgb-surface) / 0.92)),
+    radial-gradient(circle at top left, rgb(var(--rgb-blue-strong) / 0.06), transparent 34%);
+  box-shadow: 0 18px 44px rgb(var(--rgb-shadow) / 0.08);
+}
+
+.testingContactActions {
+  min-height: 180px;
+  color: var(--color-ink);
+  background:
+    radial-gradient(circle at 88% 12%, rgb(var(--rgb-blue-strong) / 0.12), transparent 30%),
+    linear-gradient(135deg, rgb(var(--rgb-surface) / 0.98), rgb(var(--rgb-tint-soft) / 0.92));
+  box-shadow: 0 18px 44px rgb(var(--rgb-shadow) / 0.08);
+}
+
+.testingContactDetails {
+  display: grid;
+  gap: 12px;
+  padding: clamp(18px, 2.2vw, 24px);
+}
+
+.testingContactRow {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid rgb(var(--rgb-line) / 0.24);
+  border-radius: 18px;
+  background: rgb(var(--rgb-tint-softer) / 0.72);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.testingContactRow span,
+.testingContactActions > span {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.testingContactRow span {
+  color: var(--color-blue);
+}
+
+.testingContactActions > span {
+  color: var(--color-blue);
+  font-weight: 900;
+}
+
+.testingContactRow a,
+.testingContactRow strong {
+  min-width: 0;
+  color: var(--color-ink);
+  font-size: 0.94rem;
+  font-weight: 680;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.testingContactRow a:hover {
+  color: var(--color-blue);
+}
+
+.testingContactRow button,
+.testingContactToggle,
+.testingContactOptionPrimary,
+.testingContactOptionSecondary {
+  min-height: 38px;
+  padding: 8px 13px;
+  border: 1px solid rgb(var(--rgb-line) / 0.34);
+  border-radius: 999px;
+  background: rgb(var(--rgb-surface) / 0.84);
+  color: var(--color-ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 750;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.testingContactActions {
+  padding: clamp(24px, 3vw, 34px);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.testingContactActions h3 {
+  margin: 14px 0 0;
+  color: var(--color-heading);
+  font-size: clamp(1.35rem, 2vw, 1.72rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+
+.testingContactActions p {
+  margin: 16px 0 0;
+  color: var(--color-subtle);
+  font-size: 0.96rem;
+  font-weight: 450;
+  line-height: 1.66;
+}
+
+.testingContactToggle {
+  margin-top: 22px;
+  border-color: transparent;
+  background: var(--color-blue);
+  color: var(--color-surface);
+}
+
+.testingContactOptionsPanel {
+  width: 100%;
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.testingContactOptionCard {
+  display: grid;
+  gap: 9px;
+  padding: 14px;
+  border: 1px solid rgb(var(--rgb-line) / 0.26);
+  border-radius: 18px;
+  background: rgb(var(--rgb-surface) / 0.78);
+  box-shadow: 0 10px 26px rgb(var(--rgb-shadow) / 0.05);
+  backdrop-filter: blur(14px);
+}
+
+.testingContactOptionCard span {
+  color: var(--color-blue);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.testingContactOptionCard strong {
+  color: var(--color-ink);
+  font-size: 0.95rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.testingContactOptionPrimary {
+  border-color: transparent;
+  color: var(--color-surface);
+  background: var(--color-contrast-surface);
+}
+
+.testingContactOptionSecondary {
+  border-color: rgb(var(--rgb-blue-strong) / 0.22);
+  color: var(--color-ink);
+  background: rgb(var(--rgb-surface) / 0.72);
+}
+
+.testingContactRow button:hover,
+.testingContactToggle:hover,
+.testingContactOptionPrimary:hover,
+.testingContactOptionSecondary:hover {
+  transform: translateY(-2px);
+  border-color: rgb(var(--rgb-blue-strong) / 0.45);
+  box-shadow: 0 12px 28px rgb(var(--rgb-shadow) / 0.1);
+}
+
+.testingContactToggle:hover {
+  background: var(--color-blue-deep);
+}
+
+.testingGroupedSkillCard h3,
+.testingProjectCard h3,
+.testingExperienceMeta h3,
+.testingCertificationCard h3,
+.testingFocusCard h3 {
+  font-size: clamp(1.05rem, 1.25vw, 1.22rem);
+  font-weight: 720;
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+}
+
+.testingProjectCard > p,
+.testingFocusCard p,
+.testingContactActions p {
+  color: var(--color-subtle);
+  font-size: clamp(0.92rem, 1vw, 0.98rem);
+  font-weight: 450;
+  line-height: 1.62;
+}
+
+.testingGroupedSkillCard li {
+  font-size: clamp(0.92rem, 1vw, 0.98rem);
+  font-weight: 620;
+  line-height: 1.42;
+}
+
+.testingGroupedSkillCard > span,
+.testingExperienceMeta > span,
+.testingContactRow span,
+.testingContactActions > span,
+.testingContactOptionCard span {
+  font-size: 0.74rem;
+  font-weight: 760;
+  letter-spacing: 0.055em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.testingProjectTags span,
+.testingExperienceTags span {
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1.12;
+}
+
+.testingContactRow button,
+.testingContactToggle,
+.testingContactOptionPrimary,
+.testingContactOptionSecondary {
+  font-size: 0.84rem;
+  font-weight: 720;
+}
+
+.testingExperienceMeta p,
+.testingExperienceMeta small {
+  font-size: 0.86rem;
+  font-weight: 580;
+  line-height: 1.35;
+}
+
+.testingExperienceMeta small {
+  font-size: 0.82rem;
+  font-weight: 550;
+}
+
+.testingExperienceMeta > span {
+  font-size: 0.84rem;
+}
+
+.testingExperienceTags span {
+  font-size: 0.88rem;
+}
+
+.testingContactRow a,
+.testingContactRow strong {
+  font-size: 0.92rem;
+  font-weight: 650;
+  line-height: 1.34;
+}
+
+.testingContactActions h3 {
+  font-size: clamp(1.18rem, 1.55vw, 1.45rem);
+  font-weight: 760;
+  letter-spacing: -0.018em;
+  line-height: 1.16;
+}
+
+.testingContactOptionCard strong {
+  font-size: 0.95rem;
+  font-weight: 720;
+  line-height: 1.25;
+}
+
+.testing3DExperienceEnabled {
+  --testing-glass-bg: rgb(var(--rgb-surface) / 0.72);
+  --testing-glass-border: rgb(var(--rgb-line) / 0.22);
+  --testing-blue: var(--color-blue-strong);
+  --testing-cyan: var(--color-cyan);
+  --testing-violet: var(--color-violet);
+  --testing-slate: var(--color-heading);
+  --testing-muted: var(--color-muted);
+  --testing-card-shadow: 0 20px 55px rgb(var(--rgb-shadow) / 0.1);
+  font-family:
+    "Inter",
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at 11% 38%, rgb(var(--rgb-cyan) / 0.1), transparent 28%),
+    radial-gradient(circle at 87% 46%, rgb(var(--rgb-violet) / 0.09), transparent 30%),
+    radial-gradient(circle at 54% 76%, rgb(var(--rgb-blue-strong) / 0.08), transparent 34%),
+    linear-gradient(180deg, var(--color-surface-soft) 0%, var(--color-surface-soft) 44%, var(--color-surface) 100%);
+}
+
+.testing3DExperienceEnabled::before {
+  content: "";
+  position: absolute;
+  inset: 620px 0 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgb(var(--rgb-blue-strong) / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--rgb-cyan) / 0.04) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(to bottom, transparent 0, black 120px, black 82%, transparent 100%);
+  pointer-events: none;
+}
+
+.testing3DExperienceEnabled > section,
+.testing3DExperienceEnabled > div {
+  position: relative;
+  z-index: 1;
+}
+
+.testing3DExperienceEnabled .testingAboutSkillsFlow {
+  padding: clamp(42px, 5vw, 68px) 0 clamp(18px, 3vw, 34px);
+}
+
+.testing3DExperienceEnabled .testingProjectsSection,
+.testing3DExperienceEnabled .testingExperienceSection,
+.testing3DExperienceEnabled .testingCertificationsSection,
+.testing3DExperienceEnabled .testingTechnicalFocus,
+.testing3DExperienceEnabled .testingContact {
+  padding-top: clamp(38px, 5vw, 68px);
+  padding-bottom: clamp(22px, 3.8vw, 42px);
+}
+
+.testing3DExperienceEnabled .testingSkillsHeader,
+.testing3DExperienceEnabled .testingProjectsHeader,
+.testing3DExperienceEnabled .testingExperienceHeader,
+.testing3DExperienceEnabled .testingCertificationsHeader,
+.testing3DExperienceEnabled .testingTechnicalFocusHeader,
+.testing3DExperienceEnabled .testingContactHeader {
+  margin-bottom: clamp(22px, 3vw, 34px);
+}
+
+.testing3DExperienceEnabled .testingSectionEyebrow {
+  font-size: clamp(1.35rem, 1.75vw, 1.85rem);
+  font-weight: 650;
+  letter-spacing: 0.055em;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillsGrid,
+.testing3DExperienceEnabled .testingProjectsGrid,
+.testing3DExperienceEnabled .testingExperienceList,
+.testing3DExperienceEnabled .testingCertificationGrid,
+.testing3DExperienceEnabled .testingFocusGrid,
+.testing3DExperienceEnabled .testingContactGrid {
+  gap: clamp(18px, 2vw, 28px);
+  perspective: 1400px;
+}
+
+.testing3DExperienceEnabled .testingAboutCard,
+.testing3DExperienceEnabled .testingGroupedSkillCard,
+.testing3DExperienceEnabled .testingProjectCard,
+.testing3DExperienceEnabled .testingExperienceCard,
+.testing3DExperienceEnabled .testingCertificationCard,
+.testing3DExperienceEnabled .testingFocusCard,
+.testing3DExperienceEnabled .testingContactDetails,
+.testing3DExperienceEnabled .testingContactActions,
+.testing3DExperienceEnabled .testingContactRow,
+.testing3DExperienceEnabled .testingContactOptionCard {
+  border-color: var(--testing-glass-border);
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.86), rgb(var(--rgb-tint-softer) / 0.68)),
+    radial-gradient(circle at 100% 0%, rgb(var(--rgb-blue-strong) / 0.08), transparent 36%),
+    rgb(var(--rgb-surface) / 0.62);
+  box-shadow:
+    var(--testing-card-shadow),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transform-style: preserve-3d;
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard,
+.testing3DExperienceEnabled .testingProjectCard,
+.testing3DExperienceEnabled .testingExperienceCard,
+.testing3DExperienceEnabled .testingCertificationCard,
+.testing3DExperienceEnabled .testingFocusCard,
+.testing3DExperienceEnabled .testingContactDetails,
+.testing3DExperienceEnabled .testingContactActions {
+  border-radius: 24px;
+}
+
+.testing3DExperienceEnabled .testingAboutCard {
+  border-radius: 30px;
+  padding: clamp(34px, 5vw, 58px);
+  gap: clamp(30px, 5vw, 68px);
+  background:
+    radial-gradient(circle at 10% 0%, rgb(var(--rgb-cyan) / 0.08), transparent 35%),
+    radial-gradient(circle at 88% 20%, rgb(var(--rgb-violet) / 0.08), transparent 34%),
+    linear-gradient(135deg, rgb(var(--rgb-surface) / 0.88), rgb(var(--rgb-tint-softer) / 0.68)),
+    rgb(var(--rgb-surface) / 0.68);
+  box-shadow:
+    0 28px 70px rgb(var(--rgb-shadow) / 0.1),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.75);
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard:hover,
+.testing3DExperienceEnabled .testingProjectCard:hover,
+.testing3DExperienceEnabled .testingExperienceCard:hover,
+.testing3DExperienceEnabled .testingCertificationCard:hover,
+.testing3DExperienceEnabled .testingFocusCard:hover,
+.testing3DExperienceEnabled .testingContactDetails:hover,
+.testing3DExperienceEnabled .testingContactActions:hover,
+.testing3DExperienceEnabled .testingContactRow:hover,
+.testing3DExperienceEnabled .testingContactOptionCard:hover {
+  border-color: rgb(var(--rgb-blue-strong) / 0.34);
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.94), rgb(var(--rgb-tint-softer) / 0.76)),
+    radial-gradient(circle at 100% 0%, rgb(var(--rgb-blue-strong) / 0.12), transparent 36%),
+    rgb(var(--rgb-surface) / 0.72);
+  box-shadow:
+    0 26px 70px rgb(var(--rgb-shadow) / 0.14),
+    0 0 0 1px rgb(var(--rgb-blue-strong) / 0.04),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.8);
+}
+
+.testing3DExperienceEnabled .testingAboutCard:hover,
+.testing3DExperienceEnabled .testingAboutCard:focus-within {
+  border-color: rgb(var(--rgb-blue-strong) / 0.36);
+  box-shadow:
+    0 34px 82px rgb(var(--rgb-shadow) / 0.13),
+    0 0 42px rgb(var(--rgb-cyan) / 0.08),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.82);
+}
+
+.testing3DExperienceEnabled .testingContactDetails:hover,
+.testing3DExperienceEnabled .testingContactActions:hover,
+.testing3DExperienceEnabled .testingContactRow:hover,
+.testing3DExperienceEnabled .testingContactOptionCard:hover {
+  transform: translateY(-6px) rotateX(1.2deg) rotateY(-1.2deg);
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard h3,
+.testing3DExperienceEnabled .testingProjectCard h3,
+.testing3DExperienceEnabled .testingExperienceMeta h3,
+.testing3DExperienceEnabled .testingCertificationCard h3,
+.testing3DExperienceEnabled .testingFocusCard h3 {
+  color: var(--testing-slate);
+  font-size: clamp(1.05rem, 1.25vw, 1.22rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+}
+
+.testing3DExperienceEnabled .testingProjectCard > p,
+.testing3DExperienceEnabled .testingFocusCard p,
+.testing3DExperienceEnabled .testingContactActions p {
+  color: var(--testing-muted);
+  font-size: clamp(0.92rem, 1vw, 0.98rem);
+  font-weight: 420;
+  line-height: 1.62;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard > span,
+.testing3DExperienceEnabled .testingExperienceMeta > span,
+.testing3DExperienceEnabled .testingContactRow span,
+.testing3DExperienceEnabled .testingContactActions > span,
+.testing3DExperienceEnabled .testingContactOptionCard span {
+  color: var(--testing-blue);
+  font-size: 0.74rem;
+  font-weight: 720;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard ul {
+  border-top-color: rgb(var(--rgb-line) / 0.24);
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard li {
+  border-bottom-color: rgb(var(--rgb-line) / 0.16);
+  color: var(--color-muted);
+  font-size: clamp(0.92rem, 1vw, 0.98rem);
+  font-weight: 620;
+}
+
+.testing3DExperienceEnabled .testingProjectTags span,
+.testing3DExperienceEnabled .testingExperienceTags span {
+  min-height: 30px;
+  border-color: rgb(var(--rgb-blue-strong) / 0.16);
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.82), rgb(var(--rgb-tint-soft) / 0.58)),
+    rgb(var(--rgb-tint-soft) / 0.66);
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 620;
+  box-shadow: inset 0 1px 0 rgb(var(--rgb-surface) / 0.72);
+}
+
+.testing3DExperienceEnabled .testingFocusCard > span {
+  color: var(--color-blue);
+  background:
+    radial-gradient(circle at 30% 20%, rgb(var(--rgb-surface) / 0.9), transparent 55%),
+    rgb(var(--rgb-tint) / 0.9);
+  box-shadow:
+    0 0 0 7px rgb(var(--rgb-blue-strong) / 0.06),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.82);
+}
+
+.testing3DExperienceEnabled .testingCertificationCard {
+  min-height: 150px;
+  align-items: center;
+}
+
+.testing3DExperienceEnabled .testingContactRow {
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.76), rgb(var(--rgb-tint-softer) / 0.58)),
+    rgb(var(--rgb-surface) / 0.56);
+}
+
+.testing3DExperienceEnabled .testingContactToggle,
+.testing3DExperienceEnabled .testingContactOptionPrimary,
+.testing3DExperienceEnabled .testingContactOptionSecondary,
+.testing3DExperienceEnabled .testingContactRow button {
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 650;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.testing3DExperienceEnabled .testingContactToggle:hover,
+.testing3DExperienceEnabled .testingContactOptionPrimary:hover,
+.testing3DExperienceEnabled .testingContactOptionSecondary:hover,
+.testing3DExperienceEnabled .testingContactRow button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgb(var(--rgb-blue-strong) / 0.14);
+}
+
+/* No `will-change: transform` here. It pinned every card — the contact rows
+   most visibly — to a permanent GPU layer, and text on a layer that never
+   re-rasterises reads as slightly out of focus. The hover transition does not
+   need the hint. */
+.testing3DCardInteractive {
+  --card-shine-x: 50%;
+  --card-shine-y: 0%;
+  position: relative;
+  overflow: hidden;
+}
+
+.testing3DCardInteractive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 12% 0%, rgb(var(--rgb-surface) / 0.84), transparent 30%),
+    linear-gradient(135deg, rgb(var(--rgb-cyan) / 0.08), transparent 42%),
+    linear-gradient(315deg, rgb(var(--rgb-violet) / 0.08), transparent 46%);
+  opacity: 0.66;
+  pointer-events: none;
+}
+
+.testing3DCardInteractive > :not(.testing3DCardShine):not(.testing3DIconBadge) {
+  position: relative;
+  z-index: 1;
+}
+
+.testing3DCardShine {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle at var(--card-shine-x) var(--card-shine-y),
+      rgb(var(--rgb-surface) / 0.72),
+      rgb(var(--rgb-surface) / 0.14) 22%,
+      transparent 46%
+    );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.testing3DCardInteractive:hover .testing3DCardShine,
+.testing3DCardInteractive:focus-within .testing3DCardShine {
+  opacity: 1;
+}
+
+.testing3DIconBadge {
+  position: relative;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border: 1px solid rgb(var(--rgb-blue-strong) / 0.16);
+  border-radius: 14px;
+  color: var(--testing-blue);
+  background:
+    radial-gradient(circle at 30% 18%, rgb(var(--rgb-surface) / 0.95), transparent 54%),
+    linear-gradient(135deg, rgb(var(--rgb-tint) / 0.92), rgb(var(--rgb-tint) / 0.6));
+  box-shadow:
+    0 12px 28px rgb(var(--rgb-blue-strong) / 0.12),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.8);
+}
+
+.testing3DIconBadge[data-testing-accent*="RAG"],
+.testing3DIconBadge[data-testing-accent*="Systems"],
+.testing3DIconBadge[data-testing-accent*="Dash"] {
+  color: var(--testing-violet);
+  border-color: rgb(var(--rgb-violet) / 0.16);
+  background:
+    radial-gradient(circle at 30% 18%, rgb(var(--rgb-surface) / 0.95), transparent 54%),
+    linear-gradient(135deg, rgb(var(--rgb-tint) / 0.92), rgb(var(--rgb-tint) / 0.58));
+}
+
+.testing3DIconBadge[data-testing-accent*="Data"],
+.testing3DIconBadge[data-testing-accent*="Decision"],
+.testing3DIconBadge[data-testing-accent*="Reporting"] {
+  color: var(--testing-cyan);
+  border-color: rgb(var(--rgb-cyan) / 0.18);
+  background:
+    radial-gradient(circle at 30% 18%, rgb(var(--rgb-surface) / 0.95), transparent 54%),
+    linear-gradient(135deg, rgb(var(--rgb-tint) / 0.88), rgb(var(--rgb-tint) / 0.55));
+}
+
+.testing3DExperienceEnabled .testingAboutCard > .testing3DIconBadge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  margin: 0;
+}
+
+.testing3DExperienceEnabled .testingAboutCopy h2 {
+  max-width: 760px;
+  color: var(--color-heading);
+  font-size: clamp(2.05rem, 3.1vw, 3.25rem);
+  font-weight: 780;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.testing3DExperienceEnabled .testingAboutCopy p:last-child {
+  max-width: 720px;
+  margin-top: 22px;
+  color: var(--color-muted);
+  font-size: clamp(0.98rem, 1.05vw, 1.06rem);
+  font-weight: 420;
+  line-height: 1.68;
+}
+
+.testing3DExperienceEnabled .testingAboutHighlights {
+  align-self: center;
+  gap: 14px;
+}
+
+.testing3DExperienceEnabled .testingAboutHighlights span {
+  min-height: 56px;
+  padding: 13px 18px;
+  border-color: rgb(var(--rgb-line) / 0.2);
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.82), rgb(var(--rgb-tint-softer) / 0.62)),
+    rgb(var(--rgb-surface) / 0.68);
+  color: var(--color-ink);
+  font-size: 0.95rem;
+  font-weight: 650;
+  box-shadow:
+    0 12px 28px rgb(var(--rgb-shadow) / 0.055),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.78);
+}
+
+.testing3DExperienceEnabled .testingAboutHighlights span:hover {
+  border-color: rgb(var(--rgb-blue-strong) / 0.28);
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.92), rgb(var(--rgb-tint-soft) / 0.72)),
+    rgb(var(--rgb-surface) / 0.82);
+  box-shadow:
+    0 18px 36px rgb(var(--rgb-blue-strong) / 0.1),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.86);
+}
+
+.testing3DExperienceEnabled .testingContactRow {
+  grid-template-columns: auto 108px minmax(0, 1fr) auto;
+}
+
+.testing3DExperienceEnabled .testingContactRow > .testing3DIconBadge {
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  border-radius: 12px;
+}
+
+.testing3DExperienceEnabled .testingContactOptionCard > .testing3DIconBadge {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 2px;
+  border-radius: 12px;
+}
+
+.testing3DExperienceEnabled .testingContactActions > .testing3DIconBadge {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 14px;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard {
+  min-height: auto;
+  padding: clamp(24px, 2.6vw, 34px);
+  border-radius: 26px;
+  border-color: rgb(var(--rgb-line) / 0.22);
+  background:
+    radial-gradient(circle at 12% 0%, rgb(var(--rgb-cyan) / 0.08), transparent 34%),
+    radial-gradient(circle at 92% 12%, rgb(var(--rgb-violet) / 0.08), transparent 34%),
+    linear-gradient(145deg, rgb(var(--rgb-surface) / 0.88), rgb(var(--rgb-tint-softer) / 0.72)),
+    rgb(var(--rgb-surface) / 0.66);
+  box-shadow:
+    0 22px 58px rgb(var(--rgb-shadow) / 0.09),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 0% 0%, rgb(var(--rgb-cyan) / 0.24), transparent 34%),
+    radial-gradient(circle at 100% 0%, rgb(var(--rgb-violet) / 0.2), transparent 34%),
+    linear-gradient(135deg, rgb(var(--rgb-cyan) / 0.26), rgb(var(--rgb-blue-strong) / 0.08), rgb(var(--rgb-violet) / 0.24));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard:hover::after,
+.testing3DExperienceEnabled .testingGroupedSkillCard:focus-within::after {
+  opacity: 0.42;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard .testing3DIconBadge {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  border-color: rgb(var(--rgb-blue-strong) / 0.16);
+  background:
+    linear-gradient(135deg, rgb(var(--rgb-surface) / 0.88), rgb(var(--rgb-tint) / 0.72)),
+    rgb(var(--rgb-tint-soft) / 0.74);
+  box-shadow:
+    0 12px 28px rgb(var(--rgb-blue-strong) / 0.1),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.8);
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard .testing3DIconBadge svg {
+  width: 19px;
+  height: 19px;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard > span {
+  display: block;
+  margin-bottom: 22px;
+  color: var(--color-blue-strong);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard h3 {
+  max-width: 92%;
+  font-size: clamp(1.18rem, 1.35vw, 1.42rem);
+  font-weight: 760;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+  color: var(--color-heading);
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard ul {
+  margin-top: 22px;
+  border-top: 1px solid rgb(var(--rgb-line) / 0.18);
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgb(var(--rgb-line) / 0.14);
+  color: var(--color-muted);
+  font-size: clamp(0.92rem, 0.95vw, 0.98rem);
+  font-weight: 580;
+  line-height: 1.35;
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillCard:hover {
+  border-color: rgb(var(--rgb-blue-strong) / 0.34);
+  box-shadow:
+    0 28px 68px rgb(var(--rgb-shadow) / 0.13),
+    0 0 34px rgb(var(--rgb-cyan) / 0.08),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.84);
+}
+
+.testing3DExperienceEnabled .testingGroupedSkillsGrid {
+  gap: clamp(20px, 2.2vw, 32px);
+  align-items: stretch;
+}
+
+.testing3DExperienceEnabled .testingProjectsGrid,
+.testing3DExperienceEnabled .testingCertificationGrid,
+.testing3DExperienceEnabled .testingFocusGrid {
+  gap: clamp(20px, 2.2vw, 32px);
+  align-items: stretch;
+}
+
+.testing3DExperienceEnabled .testingProjectCard,
+.testing3DExperienceEnabled .testingExperienceCard,
+.testing3DExperienceEnabled .testingCertificationCard,
+.testing3DExperienceEnabled .testingFocusCard {
+  min-height: auto;
+  border-radius: 26px;
+  border-color: rgb(var(--rgb-line) / 0.22);
+  background:
+    radial-gradient(circle at 12% 0%, rgb(var(--rgb-cyan) / 0.08), transparent 34%),
+    radial-gradient(circle at 92% 12%, rgb(var(--rgb-violet) / 0.08), transparent 34%),
+    linear-gradient(145deg, rgb(var(--rgb-surface) / 0.88), rgb(var(--rgb-tint-softer) / 0.72)),
+    rgb(var(--rgb-surface) / 0.66);
+  box-shadow:
+    0 22px 58px rgb(var(--rgb-shadow) / 0.09),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.testing3DExperienceEnabled .testingProjectCard::after,
+.testing3DExperienceEnabled .testingExperienceCard::after,
+.testing3DExperienceEnabled .testingCertificationCard::after,
+.testing3DExperienceEnabled .testingFocusCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 0% 0%, rgb(var(--rgb-cyan) / 0.24), transparent 34%),
+    radial-gradient(circle at 100% 0%, rgb(var(--rgb-violet) / 0.2), transparent 34%),
+    linear-gradient(135deg, rgb(var(--rgb-cyan) / 0.26), rgb(var(--rgb-blue-strong) / 0.08), rgb(var(--rgb-violet) / 0.24));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.testing3DExperienceEnabled .testingProjectCard:hover::after,
+.testing3DExperienceEnabled .testingProjectCard:focus-within::after,
+.testing3DExperienceEnabled .testingExperienceCard:hover::after,
+.testing3DExperienceEnabled .testingExperienceCard:focus-within::after,
+.testing3DExperienceEnabled .testingCertificationCard:hover::after,
+.testing3DExperienceEnabled .testingCertificationCard:focus-within::after,
+.testing3DExperienceEnabled .testingFocusCard:hover::after,
+.testing3DExperienceEnabled .testingFocusCard:focus-within::after {
+  opacity: 0.38;
+}
+
+.testing3DExperienceEnabled .testingProjectCard:hover,
+.testing3DExperienceEnabled .testingExperienceCard:hover,
+.testing3DExperienceEnabled .testingCertificationCard:hover,
+.testing3DExperienceEnabled .testingFocusCard:hover {
+  border-color: rgb(var(--rgb-blue-strong) / 0.34);
+  box-shadow:
+    0 28px 68px rgb(var(--rgb-shadow) / 0.13),
+    0 0 34px rgb(var(--rgb-cyan) / 0.08),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.84);
+}
+
+.testing3DExperienceEnabled .testingProjectCard {
+  min-height: 306px;
+  padding: clamp(24px, 2.5vw, 34px);
+  justify-content: flex-start;
+}
+
+.testing3DExperienceEnabled .testingProjectCard .testing3DIconBadge {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 22px;
+  border-radius: 14px;
+}
+
+.testing3DExperienceEnabled .testingProjectCard h3 {
+  max-width: 92%;
+  color: var(--color-heading);
+  font-size: clamp(1.18rem, 1.35vw, 1.42rem);
+  font-weight: 760;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+}
+
+.testing3DExperienceEnabled .testingProjectCard > p {
+  margin-top: clamp(16px, 1.8vw, 20px);
+  color: var(--color-muted);
+  font-size: clamp(0.92rem, 0.98vw, 1rem);
+  font-weight: 420;
+  line-height: 1.62;
+}
+
+.testing3DExperienceEnabled .testingProjectTags {
+  gap: 8px;
+  margin-top: clamp(22px, 2.4vw, 28px);
+}
+
+.testing3DExperienceEnabled .testingProjectTags span,
+.testing3DExperienceEnabled .testingExperienceTags span {
+  min-height: 28px;
+  padding: 5px 11px;
+  border-color: rgb(var(--rgb-blue-strong) / 0.16);
+  background:
+    linear-gradient(180deg, rgb(var(--rgb-surface) / 0.84), rgb(var(--rgb-tint-soft) / 0.6)),
+    rgb(var(--rgb-tint-soft) / 0.66);
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 620;
+  box-shadow: inset 0 1px 0 rgb(var(--rgb-surface) / 0.74);
+}
+
+.testing3DExperienceEnabled .testingExperienceList {
+  max-width: 100%;
+  gap: clamp(18px, 2vw, 26px);
+}
+
+.testing3DExperienceEnabled .testingExperienceCard {
+  grid-template-columns: auto minmax(260px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(16px, 2.6vw, 40px);
+  min-height: 126px;
+  padding: clamp(22px, 2.4vw, 30px);
+  align-items: center;
+}
+
+.testing3DExperienceEnabled .testingExperienceCard > .testing3DIconBadge {
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  border-radius: 11px;
+}
+
+.testing3DExperienceEnabled .testingExperienceMeta {
+  min-width: 0;
+}
+
+.testing3DExperienceEnabled .testingExperienceMeta > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 9px;
+  color: var(--color-blue-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.testing3DExperienceEnabled .testingExperienceMeta h3 {
+  color: var(--color-heading);
+  font-size: clamp(1.1rem, 1.25vw, 1.28rem);
+  font-weight: 760;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+}
+
+.testing3DExperienceEnabled .testingExperienceMeta p,
+.testing3DExperienceEnabled .testingExperienceMeta small {
+  color: var(--color-muted);
+  font-size: clamp(0.88rem, 0.95vw, 0.94rem);
+  font-weight: 480;
+  line-height: 1.35;
+}
+
+.testing3DExperienceEnabled .testingExperienceMeta small {
+  color: var(--color-subtle);
+}
+
+.testing3DExperienceEnabled .testingExperienceTags {
+  justify-content: flex-end;
+  align-self: center;
+  gap: 8px;
+}
+
+.testing3DExperienceEnabled .testingCertificationGrid {
+  max-width: 100%;
+}
+
+.testing3DExperienceEnabled .testingCertificationCard {
+  min-height: 118px;
+  padding: clamp(20px, 2.4vw, 28px);
+  gap: 15px;
+  align-items: center;
+}
+
+.testing3DExperienceEnabled .testingCertificationCard > .testing3DIconBadge {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  border-radius: 14px;
+}
+
+.testing3DExperienceEnabled .testingCertificationCard h3 {
+  color: var(--color-heading);
+  font-size: clamp(1rem, 1.18vw, 1.14rem);
+  font-weight: 740;
+  letter-spacing: -0.025em;
+  line-height: 1.22;
+}
+
+.testing3DExperienceEnabled .testingFocusCard {
+  min-height: 216px;
+  padding: clamp(24px, 2.6vw, 32px);
+}
+
+.testing3DExperienceEnabled .testingFocusCard > .testing3DIconBadge {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px 20px 0;
+  border-radius: 13px;
+  vertical-align: middle;
+}
+
+.testing3DExperienceEnabled .testingFocusCard > span {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 20px;
+  color: var(--color-blue);
+  font-size: 0.78rem;
+  font-weight: 780;
+  background:
+    radial-gradient(circle at 30% 20%, rgb(var(--rgb-surface) / 0.9), transparent 55%),
+    rgb(var(--rgb-tint) / 0.9);
+  box-shadow:
+    0 0 0 7px rgb(var(--rgb-blue-strong) / 0.06),
+    inset 0 1px 0 rgb(var(--rgb-surface) / 0.82);
+  vertical-align: middle;
+}
+
+.testing3DExperienceEnabled .testingFocusCard h3 {
+  color: var(--color-heading);
+  font-size: clamp(1.12rem, 1.3vw, 1.34rem);
+  font-weight: 760;
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+}
+
+.testing3DExperienceEnabled .testingFocusCard p {
+  margin-top: 14px;
+  color: var(--color-muted);
+  font-size: clamp(0.92rem, 0.98vw, 1rem);
+  font-weight: 420;
+  line-height: 1.62;
+}
+
+.testing3DExperienceEnabled .testingContactDetails,
+.testing3DExperienceEnabled .testingContactActions {
+  padding: clamp(22px, 2.6vw, 30px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testingAboutHighlights span,
+  .testingGroupedSkillCard,
+  .testingProjectCard,
+  .testingExperienceCard,
+  .testingCertificationCard,
+  .testingFocusCard,
+  .testingContactRow,
+  .testingContactActions,
+  .testingContactRow button,
+  .testingContactToggle,
+  .testingContactOptionPrimary,
+  .testingContactOptionSecondary {
+    transition: none;
+  }
+
+  .testingAboutHighlights span:hover,
+  .testingGroupedSkillCard:hover,
+  .testingProjectCard:hover,
+  .testingExperienceCard:hover,
+  .testingCertificationCard:hover,
+  .testingFocusCard:hover,
+  .testingContactRow:hover,
+  .testingContactActions:hover,
+  .testingContactRow button:hover,
+  .testingContactToggle:hover,
+  .testingContactOptionPrimary:hover,
+  .testingContactOptionSecondary:hover {
+    transform: none;
+  }
+
+  .testing3DExperienceEnabled .testingGroupedSkillCard,
+  .testing3DExperienceEnabled .testingProjectCard,
+  .testing3DExperienceEnabled .testingExperienceCard,
+  .testing3DExperienceEnabled .testingCertificationCard,
+  .testing3DExperienceEnabled .testingFocusCard,
+  .testing3DExperienceEnabled .testingContactDetails,
+  .testing3DExperienceEnabled .testingContactActions,
+  .testing3DExperienceEnabled .testingContactRow,
+  .testing3DExperienceEnabled .testingContactOptionCard,
+  .testing3DExperienceEnabled .testingGroupedSkillCard:hover,
+  .testing3DExperienceEnabled .testingProjectCard:hover,
+  .testing3DExperienceEnabled .testingExperienceCard:hover,
+  .testing3DExperienceEnabled .testingCertificationCard:hover,
+  .testing3DExperienceEnabled .testingFocusCard:hover,
+  .testing3DExperienceEnabled .testingContactDetails:hover,
+  .testing3DExperienceEnabled .testingContactActions:hover,
+  .testing3DExperienceEnabled .testingContactRow:hover,
+  .testing3DExperienceEnabled .testingContactOptionCard:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 1040px) {
+
+  .testingAboutCard,
+  .testingGroupedSkillsGrid,
+  .testingProjectsGrid,
+  .testingExperienceCard,
+  .testingCertificationGrid,
+  .testingFocusGrid,
+  .testingContactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .testingGroupedSkillsGrid {
+    max-width: 760px;
+  }
+
+  .testingProjectsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .testingCertificationGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .testingAboutHighlights {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .testing3DExperienceEnabled .testingExperienceCard {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .testing3DExperienceEnabled .testingExperienceTags {
+    grid-column: 2;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 760px) {
+
+  .testingAboutSkillsFlow {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .testingProjectsSection {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .testingExperienceSection,
+  .testingCertificationsSection,
+  .testingTechnicalFocus,
+  .testingContact {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .testingAboutCard {
+    padding: 26px 20px;
+    border-radius: 22px;
+  }
+
+  .testingAboutHighlights {
+    grid-template-columns: 1fr;
+  }
+
+  .testingSkillsHeader h2 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .testingProjectsHeader h2 {
+    font-size: clamp(2rem, 9.5vw, 2.95rem);
+  }
+
+  .testingExperienceHeader h2,
+  .testingTechnicalFocusHeader h2,
+  .testingContactHeader h2 {
+    font-size: clamp(1.9rem, 9vw, 2.8rem);
+  }
+
+  .testingGroupedSkillCard,
+  .testingProjectCard,
+  .testingExperienceCard,
+  .testingCertificationCard,
+  .testingFocusCard,
+  .testingContactDetails,
+  .testingContactActions {
+    border-radius: 20px;
+  }
+
+  .testingProjectsGrid,
+  .testingCertificationGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .testingContactRow {
+    grid-template-columns: 1fr;
+  }
+
+  .testing3DExperienceEnabled .testingExperienceCard {
+    grid-template-columns: 1fr;
+  }
+
+  .testing3DExperienceEnabled .testingExperienceTags {
+    grid-column: auto;
+  }
+
+  .testingContactRow button,
+  .testingContactToggle,
+  .testingContactOptionPrimary,
+  .testingContactOptionSecondary {
+    width: 100%;
+  }
+}
+
+/* --- Model Lab call-out ------------------------------------------------ */
+
+.testingModelSection {
+  width: var(--content-width);
+  margin: 96px auto 0;
+}
+
+.testingModelPanel {
+  position: relative;
+  overflow: hidden;
+  padding: 44px clamp(24px, 5vw, 56px);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 88% 12%, rgb(var(--rgb-cyan) / 0.16), transparent 46%),
+    linear-gradient(135deg, var(--color-surface-tint), var(--color-surface));
+  box-shadow: var(--shadow-soft);
+}
+
+.testingModelPanel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(var(--rgb-blue) / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--rgb-blue) / 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(115deg, black, transparent 70%);
+}
+
+.testingModelPanel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.testingModelPanel h2 {
+  margin: 10px 0 0;
+  max-width: 20ch;
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-heading);
+}
+
+.testingModelSubtitle {
+  margin: 14px 0 0;
+  max-width: 62ch;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+.testingModelActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.testingModelHint {
+  color: var(--color-subtle);
+  font-size: 0.88rem;
+}
+
+/* ======================================================================
+   EDITORIAL LAYER
+   ----------------------------------------------------------------------
+   The page now sits on a live 3D backdrop. Two things follow from that:
+   sections stop painting their own grounds so the scene shows through, and
+   the panels that do carry text become translucent glass rather than solid
+   cards. Everything here is deliberately last in the file so it settles the
+   cascade in one place rather than being scattered through the rules above.
+   ====================================================================== */
+
+.testingDefaultReplica {
+  --section-gap: clamp(96px, 15vh, 180px);
+  --panel-bg: rgb(var(--rgb-surface) / 0.62);
+  --panel-bg-strong: rgb(var(--rgb-surface) / 0.82);
+  --panel-line: rgb(var(--rgb-line) / 0.3);
+  background: transparent;
+}
+
+.testingAboutSkillsFlow,
+.testingProjectsSection,
+.testingExperienceSection,
+.testingCertificationsSection,
+.testingTechnicalFocus,
+.testingModelSection,
+.testingContact {
+  position: relative;
+  z-index: 1;
+  width: var(--content-width);
+  max-width: 1180px;
+  margin-inline: auto;
+  background: transparent;
+}
+
+.testingProjectsSection,
+.testingExperienceSection,
+.testingCertificationsSection,
+.testingTechnicalFocus,
+.testingModelSection,
+.testingContact {
+  margin-top: var(--section-gap);
+  padding: 0;
+}
+
+.testingAboutSkillsFlow {
+  padding: 0;
+  margin-top: var(--section-gap);
+}
+
+.testingSkillsSection {
+  margin-top: var(--section-gap);
+}
+
+/* --- section headings -------------------------------------------------- */
+
+.testingSectionEyebrow {
+  margin: 0 0 clamp(26px, 3.4vw, 44px);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.testingSectionEyebrow::after {
+  width: 34px;
+  height: 2px;
+  margin-top: 14px;
+}
+
+/* --- the glass panels -------------------------------------------------- */
+
+.testingGroupedSkillCard,
+.testingProjectCard,
+.testingExperienceCard,
+.testingCertificationCard,
+.testingFocusCard,
+.testingContactOptionCard,
+.testingAboutHighlights span {
+  border: 1px solid var(--panel-line);
+  background: var(--panel-bg);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: none;
+}
+
+.testingGroupedSkillCard:hover,
+.testingProjectCard:hover,
+.testingExperienceCard:hover,
+.testingCertificationCard:hover,
+.testingFocusCard:hover {
+  border-color: rgb(var(--rgb-blue-strong) / 0.5);
+  background: var(--panel-bg-strong);
+}
+
+.testingModelPanel {
+  border-color: rgb(var(--rgb-blue-strong) / 0.35);
+  background:
+    radial-gradient(circle at 88% 12%, rgb(var(--rgb-cyan) / 0.14), transparent 46%),
+    var(--panel-bg-strong);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+/* --- about: portrait beside the copy ----------------------------------- */
+
+.testingAboutSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  align-items: center;
+  gap: clamp(36px, 6vw, 82px);
+}
+
+/* --- the portrait, which flips ------------------------------------------
+   Click the photograph and it turns over to the avatar, and back again. The
+   rotation is transient and lands on exactly 0deg or 180deg, so neither face is
+   ever left sitting on a half-transformed layer. */
+
+.testingPortrait {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+  margin: 0;
+}
+
+.testingPortraitFlip {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 26px;
+  background: none;
+  aspect-ratio: 4 / 5;
+  perspective: 1400px;
+  cursor: pointer;
+}
+
+.testingPortraitFlip:focus-visible {
+  outline: 2px solid var(--color-blue-strong);
+  outline-offset: 6px;
+}
+
+.testingPortraitInner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.testingPortraitFlip.isFlipped .testingPortraitInner {
+  transform: rotateY(180deg);
+}
+
+.testingPortraitFace {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid var(--panel-line);
+  border-radius: 26px;
+  background: var(--panel-bg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.testingPortraitFace img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+
+.testingPortraitFace::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(190deg, transparent 52%, rgb(var(--rgb-page) / 0.5) 100%);
+}
+
+.testingPortraitFace.isBack {
+  transform: rotateY(180deg);
+  background:
+    radial-gradient(circle at 50% 30%, rgb(var(--rgb-blue-strong) / 0.22), transparent 62%),
+    var(--panel-bg-strong);
+}
+
+/* The avatar is a wide transparent PNG, so it sits inside the frame rather
+   than filling it. */
+.testingPortraitFace.isBack img {
+  padding: 5%;
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
+.testingPortraitHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border: 1px solid var(--panel-line);
+  border-radius: 999px;
+  color: var(--color-subtle);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  background: rgb(var(--rgb-surface) / 0.45);
+}
+
+.testingPortraitHint::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testingPortraitInner {
+    transition: none;
+  }
+}
+
+.testingAboutCopy h2 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.testingAboutCopy p {
+  max-width: 52ch;
+}
+
+.testingAboutHighlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.testingAboutHighlights span {
+  min-height: 0;
+  padding: 10px 16px;
+}
+
+@media (max-width: 900px) {
+  .testingAboutSection {
+    grid-template-columns: 1fr;
+  }
+
+  .testingPortrait {
+    max-width: 340px;
+  }
+
+  .testingPortraitFlip {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* --- text scrims -------------------------------------------------------
+   Long-form copy needs a ground of its own. Each block that carries running
+   text lays a soft wash of the page colour behind itself, so the wireframe
+   reads as depth behind the words rather than through them. */
+
+.heroContent,
+.testingAboutCopy,
+.testingSkillsHeader,
+.testingProjectsHeader,
+.testingExperienceHeader,
+.testingCertificationsHeader,
+.testingTechnicalFocusHeader,
+.testingContactHeader {
+  position: relative;
+  isolation: isolate;
+}
+
+.heroContent::before,
+.testingAboutCopy::before,
+.testingSkillsHeader::before,
+.testingProjectsHeader::before,
+.testingExperienceHeader::before,
+.testingCertificationsHeader::before,
+.testingTechnicalFocusHeader::before,
+.testingContactHeader::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: clamp(-64px, -6vw, -40px) clamp(-110px, -9vw, -60px);
+  /* farthest-side, so the wash always finishes inside its own box and never
+     shows a rectangular edge over the scene */
+  background: radial-gradient(
+    farthest-side ellipse at 30% 50%,
+    rgb(var(--rgb-page) / 0.92) 0%,
+    rgb(var(--rgb-page) / 0.62) 46%,
+    rgb(var(--rgb-page) / 0.2) 74%,
+    transparent 100%
+  );
+}
+
+.testingAboutCopy p {
+  font-size: clamp(1.02rem, 1.35vw, 1.14rem);
+  line-height: 1.75;
+}

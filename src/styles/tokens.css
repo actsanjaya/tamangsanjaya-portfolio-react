@@ -1,19 +1,156 @@
+/*
+ * DESIGN TOKENS
+ * =============
+ * Every colour in the site resolves to one of these. Light is the base;
+ * `:root[data-theme='dark']` redefines the same names, so no rule anywhere else
+ * needs a dark-mode variant.
+ *
+ * `--rgb-*` tokens carry bare channels so translucent fills can be written as
+ * `rgb(var(--rgb-surface) / 0.6)` and still flip with the theme.
+ */
+
 :root {
-  --color-ink: #10213f;
+  color-scheme: light;
+
+  /* --- text ------------------------------------------------------------ */
   --color-heading: #06142e;
+  --color-ink: #10213f;
   --color-muted: #304767;
-  --color-blue: #0b63f6;
-  --color-blue-dark: #0b3d91;
-  --color-blue-soft: #eaf3ff;
-  --color-cyan: #11a7c8;
-  --color-line: #dbe8fb;
+  --color-subtle: #5c6f8a;
+
+  /* --- surfaces -------------------------------------------------------- */
+  --color-page: #f6f9fe;
+  --color-scene-floor: #e6effc;
   --color-surface: #ffffff;
   --color-surface-soft: #f8fbff;
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.055);
-  --shadow-blue: 0 16px 30px rgba(11, 99, 246, 0.2);
+  --color-surface-tint: #edf4ff;
+  --color-surface-tint-2: #e8f2ff;
+  /* Stays dark in light mode and light-on-brand in dark mode: used for the
+     one inverted button that must read as the primary action in both. */
+  --color-contrast-surface: #07152f;
+
+  /* --- lines ----------------------------------------------------------- */
+  --color-line: #dbe8fb;
+  --color-line-strong: #a9c7f7;
+
+  /* --- brand ----------------------------------------------------------- */
+  --color-blue: #0b63f6;
+  --color-blue-strong: #2563eb;
+  --color-blue-deep: #0b4fd9;
+  --color-blue-dark: #0b3d91;
+  --color-blue-bright: #3b82f6;
+  --color-blue-light: #60a5fa;
+  --color-blue-200: #9dccff;
+  --color-blue-100: #d9eaff;
+  --color-blue-050: #e7f1ff;
+  --color-blue-soft: #eaf3ff;
+  --color-cyan: #0891b2;
+  --color-violet: #7c3aed;
+
+  /* --- status ---------------------------------------------------------- */
+  --color-success-ink: #075335;
+  --color-success-surface: #e8f8ef;
+  --color-success-line: #bfe8d1;
+  --color-warning-ink: #6b3a00;
+  --color-warning-surface: #fff5df;
+  --color-warning-line: #f5d799;
+  --color-danger-ink: #7a1d1d;
+  --color-danger-surface: #fff0f0;
+  --color-danger-line: #ffd0d0;
+
+  /* --- channels for translucent fills ---------------------------------- */
+  --rgb-surface: 255 255 255;
+  --rgb-page: 246 249 254;
+  --rgb-shadow: 15 23 42;
+  --rgb-line: 148 163 184;
+  --rgb-blue: 11 99 246;
+  --rgb-blue-strong: 37 99 235;
+  --rgb-blue-bright: 59 130 246;
+  --rgb-blue-pale: 169 199 247;
+  --rgb-cyan: 8 145 178;
+  --rgb-violet: 124 58 237;
+  --rgb-tint: 219 234 254;
+  --rgb-tint-soft: 239 246 255;
+  --rgb-tint-softer: 248 251 255;
+
+  /* --- charts (validated: adjacent ΔE 14.7 deutan, 16.3 normal) --------- */
+  --chart-primary: #2563eb;
+  --chart-compare: #0891b2;
+  --chart-grid: rgb(var(--rgb-line) / 0.28);
+  --chart-axis: var(--color-subtle);
+
+  /* --- elevation, shape ------------------------------------------------ */
+  --shadow-soft: 0 18px 45px rgb(var(--rgb-shadow) / 0.055);
+  --shadow-blue: 0 16px 30px rgb(var(--rgb-blue) / 0.2);
+  --shadow-raised: 0 26px 60px rgb(var(--rgb-shadow) / 0.09);
   --radius-sm: 10px;
   --radius-md: 14px;
   --radius-lg: 18px;
   --radius-xl: 22px;
   --content-width: min(1120px, 89%);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-heading: #eaf1fb;
+  --color-ink: #d3dfef;
+  --color-muted: #a4b6cf;
+  --color-subtle: #8496b0;
+
+  --color-page: #060d19;
+  --color-scene-floor: #040911;
+  --color-surface: #101d31;
+  --color-surface-soft: #14243c;
+  --color-surface-tint: #17293f;
+  --color-surface-tint-2: #1b2f48;
+  --color-contrast-surface: #2f6fd8;
+
+  --color-line: #24354e;
+  --color-line-strong: #34517a;
+
+  --color-blue: #4f8ff7;
+  --color-blue-strong: #5b9cf8;
+  --color-blue-deep: #2f6fd8;
+  --color-blue-dark: #1c4ea8;
+  --color-blue-bright: #6aa5f9;
+  --color-blue-light: #8dc0ff;
+  --color-blue-200: #3f6ea8;
+  --color-blue-100: #24405f;
+  --color-blue-050: #1a3050;
+  --color-blue-soft: #16283f;
+  --color-cyan: #22b8cf;
+  --color-violet: #a78bfa;
+
+  --color-success-ink: #6ee7b7;
+  --color-success-surface: #10281f;
+  --color-success-line: #1d4635;
+  --color-warning-ink: #fcd34d;
+  --color-warning-surface: #2a2008;
+  --color-warning-line: #4a3a12;
+  --color-danger-ink: #fca5a5;
+  --color-danger-surface: #2c1414;
+  --color-danger-line: #4d2222;
+
+  --rgb-surface: 16 29 49;
+  --rgb-page: 6 13 25;
+  --rgb-shadow: 0 0 0;
+  --rgb-line: 90 112 146;
+  --rgb-blue: 79 143 247;
+  --rgb-blue-strong: 91 156 248;
+  --rgb-blue-bright: 106 165 249;
+  --rgb-blue-pale: 63 110 168;
+  --rgb-cyan: 34 184 207;
+  --rgb-violet: 167 139 250;
+  --rgb-tint: 36 64 95;
+  --rgb-tint-soft: 26 43 66;
+  --rgb-tint-softer: 20 36 60;
+
+  /* Re-stepped for the dark surface, not flipped: adjacent ΔE 15.5 deutan. */
+  --chart-primary: #4f8ff7;
+  --chart-compare: #0ea5a4;
+
+  --shadow-soft: 0 18px 45px rgb(var(--rgb-shadow) / 0.4);
+  --shadow-blue: 0 16px 30px rgb(var(--rgb-blue) / 0.28);
+  --shadow-raised: 0 26px 60px rgb(var(--rgb-shadow) / 0.55);
 }

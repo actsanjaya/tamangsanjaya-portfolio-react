@@ -1,7 +1,7 @@
 # Sanjaya Tamang Portfolio
 
-Personal portfolio website for `tamangsanjaya.com.np`, built with React and Vite
-and deployed through GitHub to Cloudflare Pages.
+Personal portfolio and model lab for `tamangsanjaya.com.np`, built with React and
+Vite and deployed through GitHub to Cloudflare Pages.
 
 ## Development
 
@@ -17,62 +17,82 @@ Cloudflare Pages settings:
 - Build command: `npm run build`
 - Build output directory: `dist`
 
-## Mode Architecture
+## Structure
 
-The site is structured around portfolio modes. The central registry lives in
-`src/config/modes.js`. Each mode entry includes an id, name, description, route,
-status, icon, and component.
+```
+src/
+  config/pages.js          the route table and the navbar links
+  config/siteData.js       name, contact details, links
+  config/projectsData.js   project metadata (status, links, roadmaps)
+  hooks/useTheme.js        light/dark, stored per visitor
+  styles/tokens.css        every colour in the site, light and dark
+  styles/globals.css       shell only — navbar, hero frame, footer
+  scene/                   the WebGL backdrop behind every page
+  pages/portfolio/         the CV page
+  pages/model-lab/         the interactive models
+Model/                     the Python models the lab is ported from
+```
 
-Current routes:
+Two routes:
 
-- `/` and `/default`: professional default portfolio
-- `/gesture`: optional webcam gesture-control command center
-- `/gaming`: lightweight game-like portfolio zone scaffold
+- `/` (alias `/default`) — the portfolio
+- `/model` (aliases `/models`, `/model-lab`) — the Model Lab, lazy-loaded
 
-Gesture Mode is built as an optional Actuarial Command Center experience. It
-uses `src/modes/gesture/hooks/useGestureEngine.js` for camera permission,
-MediaPipe Tasks Vision hand tracking, mirrored-preview correction, gesture
-cooldowns, fallback state, and cleanup. Mouse, keyboard, touch, and manual
-fallback controls remain available when camera or model access is unavailable.
+Anything else falls back to the portfolio, so old links keep working.
+`public/_redirects` gives Cloudflare Pages the same behaviour server-side.
 
-To add a future mode:
+## The 3D backdrop
 
-1. Create a new folder in `src/modes`.
-2. Add the mode component and any mode-specific data/config files.
-3. Register it in `src/config/modes.js`.
-4. Set `showInSwitcher: true` when it should appear in the UI.
+`src/scene/` holds one fixed WebGL canvas that sits behind the whole site: a
+present-value surface, with the camera moving along a keyframed path as you
+scroll. `discountSurface.js` has the maths and the camera path; `SceneBackdrop.jsx`
+mounts it.
 
-The `public/_redirects` file keeps client-side routes working on Cloudflare
-Pages.
+three.js is dynamically imported, so it is a separate chunk that never blocks
+first paint. Below 820px wide, and whenever the visitor prefers reduced motion,
+it is not fetched at all — the gradient in `scene/scene.css` is the backdrop
+there.
 
-## Adding a New Project/App
+## Theming
 
-Focused portfolio projects live in `src/config/projectsData.js`. Each entry is
-metadata only: the portfolio should describe, link to, or document serious tools,
-while full apps stay in separate repos and deployments.
+Every colour resolves to a token in `src/styles/tokens.css`. Light is the base;
+`:root[data-theme='dark']` redefines the same names. `--rgb-*` tokens hold bare
+channels so translucent fills (`rgb(var(--rgb-surface) / 0.6)`) flip with the
+theme too.
 
-To add or edit a project card:
+**Never hardcode a colour in a rule.** A literal hex or `rgba()` will look right
+in light mode and quietly break in dark.
 
-1. Add or update an object in `portfolioProjects`.
-2. Set `status` to `completed`, `in-progress`, `planned`, or `prototype`.
-3. Use `featured: true` for projects that should be emphasized.
-4. Add `tools`, `tags`, `deliverables`, and `futureRoadmap` values for the card
-   and future case study.
-5. Put future subdomains in `appSubdomain` as planning metadata only.
+The site opens dark, because the backdrop needs it. A visitor who picks light in
+the navbar keeps light — the choice is stored in `localStorage`.
 
-External links are controlled by the `links` object:
+Two motion rules that are easy to break and hard to see: no `filter: blur()` in a
+reveal, and no fractional `scale` in a hover. Both pin the element to a
+composited layer that never re-rasterises, and the text stays visibly soft.
 
-- `liveApp`: deployed app URL when real
-- `caseStudy`: portfolio or documentation page
-- `github`: public repository URL
-- `download`: downloadable template or resource URL
-- `demoVideo`: video demo URL
-- `screenshot`: screenshot asset path or URL
+## Adding a model to the Model Lab
 
-Leave unavailable links as `null`. The UI renders those actions as disabled
-"Coming Soon" buttons instead of pretending a demo or app is live.
+Data plus one pure function — no new page, no new UI.
 
-For future downloadable templates, add the file intentionally and set
-`links.download` only after confirming the file contains no confidential data.
-All actuarial examples should use sample or synthetic data; do not commit private
-employer, client, policyholder, model, assumption, or company files to this repo.
+1. Copy `src/pages/model-lab/models/_template/` to `models/<your-model-id>/`.
+2. Fill in `manifest.js`: inputs (each with a default), outputs, charts, table
+   columns, assumptions, method notes, limitations, disclaimer.
+3. Implement `run(inputs) -> { summary, series, table, warnings }` in `run.js`.
+   Pure, no network, no DOM, never throws.
+4. Verify it against an independently computed reference case and save the
+   expected figures as `reference.js`.
+5. Register it in `src/pages/model-lab/registry.js`.
+
+The card, the inputs form, the summary tiles, the chart, the projection table and
+the CSV export are all generated from the manifest. See `Model/README.md` for the
+Python-to-browser workflow.
+
+## Adding a project card
+
+Projects live in `src/config/projectsData.js`. Set `status` to `completed`,
+`in-progress`, `planned` or `prototype`, and leave unavailable links as `null` —
+the UI renders those as "Coming Soon" rather than pretending a demo is live.
+
+Only add a downloadable file after confirming it contains no confidential data.
+All examples use sample or synthetic data; no employer, client, policyholder,
+model, assumption or company files belong in this repo.

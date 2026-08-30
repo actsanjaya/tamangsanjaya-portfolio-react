@@ -1,0 +1,743 @@
+/* Model Lab — scoped to `.labPage`. No global selectors in this file. */
+
+.labPage {
+  width: var(--content-width);
+  margin: 0 auto;
+  padding: 48px 0 96px;
+  color: var(--color-ink);
+}
+
+/* --- index ------------------------------------------------------------- */
+
+.labHero {
+  max-width: 62ch;
+  margin-bottom: 40px;
+}
+
+.labEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 14px;
+  padding: 6px 12px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 999px;
+  color: var(--color-blue-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  background: var(--color-surface-tint);
+}
+
+.labPage h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--color-heading);
+}
+
+.labHeroText {
+  margin: 18px 0 0;
+  color: var(--color-muted);
+  font-size: 1.03rem;
+  line-height: 1.7;
+}
+
+.labModelGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 20px;
+}
+
+.labModelCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.labModelCard.isLive {
+  border-color: var(--color-line-strong);
+}
+
+.labModelCard.isLive:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-blue-strong);
+  box-shadow: var(--shadow-raised);
+}
+
+.labModelCard header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.labStatusChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.labStatusChip.status-live {
+  color: var(--color-success-ink);
+  border-color: var(--color-success-line);
+  background: var(--color-success-surface);
+}
+
+.labStatusChip.status-coming-soon {
+  color: var(--color-subtle);
+  border-color: var(--color-line);
+  background: var(--color-surface-tint);
+}
+
+.labModelCategory {
+  color: var(--color-subtle);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.labModelCard h3 {
+  margin: 0;
+  font-size: 1.18rem;
+  letter-spacing: -0.012em;
+  color: var(--color-heading);
+}
+
+.labModelCard p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.labPlanned {
+  display: grid;
+  gap: 8px;
+  margin: 4px 0 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-soft);
+}
+
+.labPlanned div {
+  display: grid;
+  gap: 2px;
+}
+
+.labPlanned dt {
+  color: var(--color-subtle);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.labPlanned dd {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.labPrimaryButton {
+  margin-top: auto;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 750;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-blue-deep));
+  box-shadow: 0 12px 24px rgb(var(--rgb-blue) / 0.18);
+}
+
+.labPrimaryButton:disabled {
+  color: var(--color-subtle);
+  background: var(--color-surface-tint);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.labGhostButton {
+  padding: 8px 13px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.labGhostButton:hover {
+  color: var(--color-blue-strong);
+  border-color: var(--color-line-strong);
+}
+
+.labFooterNote {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-line);
+}
+
+.labFooterNote p {
+  max-width: 68ch;
+  margin: 0;
+  color: var(--color-subtle);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* --- runner ------------------------------------------------------------ */
+
+.labBackButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding: 7px 12px 7px 9px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  font-weight: 700;
+  font-size: 0.86rem;
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.labModelHeader {
+  max-width: 66ch;
+  margin-bottom: 28px;
+}
+
+.labModelHeader p {
+  margin: 12px 0 0;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+.labSampleNote {
+  padding: 12px 14px;
+  border-left: 3px solid var(--color-blue-strong);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  background: var(--color-surface-tint);
+}
+
+.labRunner {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.labRunnerInputs {
+  position: sticky;
+  top: 92px;
+}
+
+.labInputs {
+  padding: 20px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.labInputsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.labInputsHeader h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--color-heading);
+}
+
+.labInputGroup {
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+}
+
+.labInputGroup legend {
+  padding: 0;
+  margin-bottom: 10px;
+  color: var(--color-subtle);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.labInputField {
+  margin-bottom: 14px;
+}
+
+.labInputField label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+  color: var(--color-heading);
+  font-size: 0.87rem;
+  font-weight: 700;
+}
+
+.labInputUnit {
+  color: var(--color-subtle);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.labInputField input,
+.labInputField select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 11px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-heading);
+  font-variant-numeric: tabular-nums;
+  background: var(--color-surface-soft);
+}
+
+.labInputField input:focus-visible,
+.labInputField select:focus-visible {
+  outline: 2px solid var(--color-blue-strong);
+  outline-offset: 1px;
+}
+
+.labInputHelp {
+  margin: 5px 0 0;
+  color: var(--color-subtle);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.labRunnerResults {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
+.labWarnings {
+  padding: 12px 14px;
+  border: 1px solid var(--color-warning-line);
+  border-radius: var(--radius-md);
+  color: var(--color-warning-ink);
+  background: var(--color-warning-surface);
+}
+
+.labWarnings p {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.labWarnings p + p {
+  margin-top: 6px;
+}
+
+.labSummary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.labSummaryTile {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.labSummaryTile.isPrimary {
+  border-color: var(--color-line-strong);
+  background: linear-gradient(135deg, var(--color-surface-tint), var(--color-surface));
+}
+
+.labSummaryLabel {
+  color: var(--color-subtle);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.labSummaryValue {
+  color: var(--color-heading);
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.labSummaryValue.isDown {
+  color: var(--color-danger-ink);
+}
+
+.labSummaryValue.isUp {
+  color: var(--color-success-ink);
+}
+
+/* --- chart -------------------------------------------------------------- */
+
+.labChart {
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.labChart figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.labChart h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-heading);
+}
+
+.labChartLegend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.labLegendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.labLegendSwatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.labLegendSwatch.isPrimary {
+  background: var(--chart-primary);
+}
+
+.labLegendSwatch.isCompare {
+  background: var(--chart-compare);
+}
+
+.labChartSurface {
+  position: relative;
+}
+
+.labChartSurface svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  touch-action: pan-y;
+}
+
+.labChartGrid {
+  stroke: var(--chart-grid);
+  stroke-width: 1;
+}
+
+.labChartAxisLabel {
+  fill: var(--chart-axis);
+  font-size: 11px;
+}
+
+.labChartAxisTitle {
+  fill: var(--color-subtle);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.labChartArea {
+  fill: var(--chart-primary);
+  fill-opacity: 0.12;
+  stroke: none;
+}
+
+.labChartLine {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.labChartLine.isPrimary {
+  stroke: var(--chart-primary);
+}
+
+.labChartLine.isCompare {
+  stroke: var(--chart-compare);
+  stroke-dasharray: 5 4;
+}
+
+.labChartCrosshair {
+  stroke: var(--color-line-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.labChartMarker {
+  stroke: var(--color-surface);
+  stroke-width: 2;
+}
+
+.labChartMarker.isPrimary {
+  fill: var(--chart-primary);
+}
+
+.labChartMarker.isCompare {
+  fill: var(--chart-compare);
+}
+
+.labChartTooltip {
+  position: absolute;
+  top: 8px;
+  display: grid;
+  gap: 3px;
+  padding: 9px 11px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.labChartTooltip strong {
+  color: var(--color-heading);
+}
+
+.labChartTooltip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- table -------------------------------------------------------------- */
+
+.labTableBlock {
+  padding: 20px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.labTableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.labTableHeader h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-heading);
+}
+
+.labTableScroll {
+  overflow-x: auto;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.labTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.labTable th,
+.labTable td {
+  padding: 9px 12px;
+  text-align: right;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.labTable th:first-child,
+.labTable td:first-child {
+  text-align: left;
+}
+
+.labTable th {
+  position: sticky;
+  top: 0;
+  color: var(--color-subtle);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--color-surface);
+}
+
+.labTable td {
+  color: var(--color-muted);
+}
+
+/* --- assumptions -------------------------------------------------------- */
+
+.labAssumptions {
+  padding: 22px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-soft);
+}
+
+.labAssumptions h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  color: var(--color-heading);
+}
+
+.labAssumptions h4 {
+  margin: 18px 0 8px;
+  color: var(--color-subtle);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.labMethodNotes,
+.labAssumptions li {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.labAssumptions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.labAssumptions li + li {
+  margin-top: 5px;
+}
+
+.labDisclaimer {
+  margin: 20px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-subtle);
+  font-size: 0.82rem;
+}
+
+.labEmptyState {
+  padding: 28px;
+  border: 1px dashed var(--color-line-strong);
+  border-radius: var(--radius-lg);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .labRunner {
+    grid-template-columns: 1fr;
+  }
+
+  .labRunnerInputs {
+    position: static;
+  }
+}
+
+/* --- over the 3D backdrop ----------------------------------------------
+   The lab sits on the same live scene as the portfolio, so its panels use the
+   same translucent glass rather than solid cards. */
+
+.labModelCard,
+.labInputs,
+.labSummaryTile,
+.labChart,
+.labTableBlock,
+.labAssumptions,
+.labGhostButton,
+.labBackButton {
+  border-color: rgb(var(--rgb-line) / 0.3);
+  background: rgb(var(--rgb-surface) / 0.66);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: none;
+}
+
+.labModelCard.isLive:hover {
+  background: rgb(var(--rgb-surface) / 0.84);
+  box-shadow: none;
+}
+
+/* Sticky table headers need an opaque ground or the rows show through them. */
+.labTable th {
+  background: var(--color-surface);
+}
+
+.labHero,
+.labModelHeader {
+  position: relative;
+  isolation: isolate;
+}
+
+.labHero::before,
+.labModelHeader::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -56px -96px;
+  background: radial-gradient(
+    farthest-side ellipse at 30% 50%,
+    rgb(var(--rgb-page) / 0.92) 0%,
+    rgb(var(--rgb-page) / 0.6) 46%,
+    transparent 100%
+  );
+}
+
+.labPage {
+  padding-top: clamp(56px, 9vh, 96px);
+}
